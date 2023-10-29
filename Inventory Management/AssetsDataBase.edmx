@@ -1,0 +1,585 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EQUInventoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EditTracking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="RecordID" Type="int" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ItemTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Locations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationName" Type="nvarchar" MaxLength="35" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Records">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetTag" Type="nvarchar" MaxLength="10" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="TypeID" Type="int" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="70" />
+          <Property Name="Description" Type="nvarchar" MaxLength="150" />
+          <Property Name="LocationID" Type="int" />
+          <Property Name="SerialNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="StatusID" Type="int" />
+          <Property Name="PurchaseDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="50" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="RoleID" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
+        <Association Name="FK__EditTrack__Recor__59FA5E80">
+          <End Role="Records" Type="Self.Records" Multiplicity="0..1" />
+          <End Role="EditTracking" Type="Self.EditTracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Records">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EditTracking">
+              <PropertyRef Name="RecordID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EditTrack__UserI__59063A47">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="EditTracking" Type="Self.EditTracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EditTracking">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Records__Categor__4BAC3F29">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Records__Locatio__4D94879B">
+          <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Records__StatusI__4E88ABD4">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="0..1" />
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Records__TypeID__4CA06362">
+          <End Role="ItemTypes" Type="Self.ItemTypes" Multiplicity="0..1" />
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserRoles__RoleI__5629CD9C">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserRoles__UserI__5535A963">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EQUInventoryModelStoreContainer">
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EditTracking" EntityType="Self.EditTracking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemTypes" EntityType="Self.ItemTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Records" EntityType="Self.Records" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statuses" EntityType="Self.Statuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__EditTrack__Recor__59FA5E80" Association="Self.FK__EditTrack__Recor__59FA5E80">
+            <End Role="Records" EntitySet="Records" />
+            <End Role="EditTracking" EntitySet="EditTracking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EditTrack__UserI__59063A47" Association="Self.FK__EditTrack__UserI__59063A47">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="EditTracking" EntitySet="EditTracking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Records__Categor__4BAC3F29" Association="Self.FK__Records__Categor__4BAC3F29">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Records__Locatio__4D94879B" Association="Self.FK__Records__Locatio__4D94879B">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Records__StatusI__4E88ABD4" Association="Self.FK__Records__StatusI__4E88ABD4">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Records__TypeID__4CA06362" Association="Self.FK__Records__TypeID__4CA06362">
+            <End Role="ItemTypes" EntitySet="ItemTypes" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRoles__RoleI__5629CD9C" Association="Self.FK__UserRoles__RoleI__5629CD9C">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRoles__UserI__5535A963" Association="Self.FK__UserRoles__UserI__5535A963">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EQUInventoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShortName" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Records" Relationship="Self.FK__Records__Categor__4BAC3F29" FromRole="Categories" ToRole="Records" />
+        </EntityType>
+        <EntityType Name="EditTracking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="RecordID" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Record" Relationship="Self.FK__EditTrack__Recor__59FA5E80" FromRole="EditTracking" ToRole="Records" />
+          <NavigationProperty Name="User" Relationship="Self.FK__EditTrack__UserI__59063A47" FromRole="EditTracking" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="ItemType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Records" Relationship="Self.FK__Records__TypeID__4CA06362" FromRole="ItemTypes" ToRole="Records" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Records" Relationship="Self.FK__Records__Locatio__4D94879B" FromRole="Locations" ToRole="Records" />
+        </EntityType>
+        <EntityType Name="Record">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetTag" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="TypeID" Type="Int32" />
+          <Property Name="Brand" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LocationID" Type="Int32" />
+          <Property Name="SerialNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StatusID" Type="Int32" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Records__Categor__4BAC3F29" FromRole="Records" ToRole="Categories" />
+          <NavigationProperty Name="EditTrackings" Relationship="Self.FK__EditTrack__Recor__59FA5E80" FromRole="Records" ToRole="EditTracking" />
+          <NavigationProperty Name="ItemType" Relationship="Self.FK__Records__TypeID__4CA06362" FromRole="Records" ToRole="ItemTypes" />
+          <NavigationProperty Name="Location" Relationship="Self.FK__Records__Locatio__4D94879B" FromRole="Records" ToRole="Locations" />
+          <NavigationProperty Name="Status" Relationship="Self.FK__Records__StatusI__4E88ABD4" FromRole="Records" ToRole="Statuses" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK__UserRoles__RoleI__5629CD9C" FromRole="Roles" ToRole="UserRoles" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShortName" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Records" Relationship="Self.FK__Records__StatusI__4E88ABD4" FromRole="Statuses" ToRole="Records" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="RoleID" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__UserRoles__RoleI__5629CD9C" FromRole="UserRoles" ToRole="Roles" />
+          <NavigationProperty Name="User" Relationship="Self.FK__UserRoles__UserI__5535A963" FromRole="UserRoles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="isActive" Type="Boolean" />
+          <NavigationProperty Name="EditTrackings" Relationship="Self.FK__EditTrack__UserI__59063A47" FromRole="Users" ToRole="EditTracking" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK__UserRoles__UserI__5535A963" FromRole="Users" ToRole="UserRoles" />
+        </EntityType>
+        <Association Name="FK__Records__Categor__4BAC3F29">
+          <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Records" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EditTrack__Recor__59FA5E80">
+          <End Role="Records" Type="Self.Record" Multiplicity="0..1" />
+          <End Role="EditTracking" Type="Self.EditTracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Records">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EditTracking">
+              <PropertyRef Name="RecordID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EditTrack__UserI__59063A47">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="EditTracking" Type="Self.EditTracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EditTracking">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Records__TypeID__4CA06362">
+          <End Role="ItemTypes" Type="Self.ItemType" Multiplicity="0..1" />
+          <End Role="Records" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Records__Locatio__4D94879B">
+          <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Records" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Records__StatusI__4E88ABD4">
+          <End Role="Statuses" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Records" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserRoles__RoleI__5629CD9C">
+          <End Role="Roles" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="UserRoles" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserRoles__UserI__5535A963">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserRoles" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EQUInventoryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="EditTrackings" EntityType="Self.EditTracking" />
+          <EntitySet Name="ItemTypes" EntityType="Self.ItemType" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="Records" EntityType="Self.Record" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Statuses" EntityType="Self.Status" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Records__Categor__4BAC3F29" Association="Self.FK__Records__Categor__4BAC3F29">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EditTrack__Recor__59FA5E80" Association="Self.FK__EditTrack__Recor__59FA5E80">
+            <End Role="Records" EntitySet="Records" />
+            <End Role="EditTracking" EntitySet="EditTrackings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EditTrack__UserI__59063A47" Association="Self.FK__EditTrack__UserI__59063A47">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="EditTracking" EntitySet="EditTrackings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Records__TypeID__4CA06362" Association="Self.FK__Records__TypeID__4CA06362">
+            <End Role="ItemTypes" EntitySet="ItemTypes" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Records__Locatio__4D94879B" Association="Self.FK__Records__Locatio__4D94879B">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Records__StatusI__4E88ABD4" Association="Self.FK__Records__StatusI__4E88ABD4">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRoles__RoleI__5629CD9C" Association="Self.FK__UserRoles__RoleI__5629CD9C">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRoles__UserI__5535A963" Association="Self.FK__UserRoles__UserI__5535A963">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EQUInventoryModelStoreContainer" CdmEntityContainer="EQUInventoryEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="EQUInventoryModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EditTrackings">
+            <EntityTypeMapping TypeName="EQUInventoryModel.EditTracking">
+              <MappingFragment StoreEntitySet="EditTracking">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="RecordID" ColumnName="RecordID" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemTypes">
+            <EntityTypeMapping TypeName="EQUInventoryModel.ItemType">
+              <MappingFragment StoreEntitySet="ItemTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="EQUInventoryModel.Location">
+              <MappingFragment StoreEntitySet="Locations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Records">
+            <EntityTypeMapping TypeName="EQUInventoryModel.Record">
+              <MappingFragment StoreEntitySet="Records">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AssetTag" ColumnName="AssetTag" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="EQUInventoryModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statuses">
+            <EntityTypeMapping TypeName="EQUInventoryModel.Status">
+              <MappingFragment StoreEntitySet="Statuses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="EQUInventoryModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="EQUInventoryModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
