@@ -107,6 +107,12 @@
     <Compile Include="Asset.Designer.cs">
       <DependentUpon>Asset.cs</DependentUpon>
     </Compile>
+    <Compile Include="AssetControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AssetControl.Designer.cs">
+      <DependentUpon>AssetControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="AssetsDataBase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -125,6 +131,12 @@
     <Compile Include="Category.cs">
       <DependentUpon>AssetsDataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="DashBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DashBoard.Designer.cs">
+      <DependentUpon>DashBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditTracking.cs">
       <DependentUpon>AssetsDataBase.tt</DependentUpon>
     </Compile>
@@ -141,6 +153,7 @@
     <Compile Include="Location.cs">
       <DependentUpon>AssetsDataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="QueryDataBase.cs" />
     <Compile Include="Record.cs">
       <DependentUpon>AssetsDataBase.tt</DependentUpon>
     </Compile>
@@ -164,6 +177,7 @@
     <Compile Include="Status.cs">
       <DependentUpon>AssetsDataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="StyleGridView.cs" />
     <Compile Include="themecolor.cs" />
     <Compile Include="User.cs">
       <DependentUpon>AssetsDataBase.tt</DependentUpon>
@@ -182,6 +196,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Asset.resx">
       <DependentUpon>Asset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssetControl.resx">
+      <DependentUpon>AssetControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DashBoard.resx">
+      <DependentUpon>DashBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

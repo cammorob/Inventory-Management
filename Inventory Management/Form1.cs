@@ -27,82 +27,31 @@ namespace Inventory_Management
             _eQU = new EQUInventoryEntities();
            random = new Random();
          
-            LoadChartData();
-            LoadPieChartData();
+          
         }
 
-        private void Form1_Load(object sender, EventArgs e, List<object> data)
+        private void addUserControl(UserControl userControl)
         {
-          
+            userControl.Dock = DockStyle.Fill;
+            DashBoardDock.Controls.Clear();
+            DashBoardDock.Controls.Add(userControl);
+            userControl.BringToFront();
 
+
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+           
             int w = Screen.PrimaryScreen.Bounds.Width;
             int h = Screen.PrimaryScreen.Bounds.Height;
             this.Location = new Point(0, 0);
             this.Size = new Size(w, h);
 
-            LoadChartData();
-
-
-        }
-
-
-         private void LoadChartData()
-        {
-
-            records = _eQU.Records.ToList(); // Fetch records from the database
-
-            int applianceCount = records.Count(q => q.Category.CategoryName == "Appliance");
-            int furnitureCount = records.Count(q => q.Category.CategoryName == "Furniture");
-            int itEquipmentCount = records.Count(q => q.Category.CategoryName == "IT Equipment");
-            int LaptopCount = records.Count(q => q.ItemType.TypeName == "Laptop");
-            int keyBoardCount = records.Count(q => q.ItemType.TypeName == "Keyboard");
-            int DesktopCount = records.Count(q => q.ItemType.TypeName == "Desktop");
-            // Binding the data to the chart
-            chart1.Series.Clear();
-            chart1.Series.Add("Categories");
-            chart1.Series["Categories"].Points.AddXY("Appliance", applianceCount);
-            chart1.Series["Categories"].Points.AddXY("Furniture", furnitureCount);
-            chart1.Series["Categories"].Points.AddXY("IT Equipment", itEquipmentCount);
-            chart1.Series["Categories"].Points.AddXY("Laptop", LaptopCount);
-            chart1.Series["Categories"].Points.AddXY("Keyboard", keyBoardCount);
-            chart1.Series["Categories"].Points.AddXY("Laptop", DesktopCount);
-            chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
-            chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LawnGreen;
-            // Set chart type and other properties
-            chart1.Series["Categories"].ChartType = SeriesChartType.Column;
-            chart1.Titles.Add("Instant Record Report");
-            chart1.Titles[0].ForeColor = Color.MediumPurple;
-            chart1.Titles[0].Font = new Font("Time New Roman", 10, FontStyle.Bold);
-        }
-        private void LoadPieChartData()
-        {
-           
-                var records = _eQU.Records.ToList(); // Fetch records from the database
-            int workingCount = records.Count(q => q.Status.StatusName == "Working");
-            int notWorkingCount = records.Count(q => q.Status.StatusName == "Not Working");
-
-            // Populate the pie chart
-            chart2.Series.Clear();
-            chart2.Series.Add("Status");
-            chart2.Series["Status"].Points.AddXY("Working", workingCount);
-            chart2.Series["Status"].Points.AddXY("Not Working", notWorkingCount);
-
-            // Set chart type and other properties for a pie chart
-            chart2.Series["Status"].ChartType = SeriesChartType.Pie;
-            chart2.Titles.Add("Working vs Not Working Status");
-
-            // Display counts within the pie chart
-            foreach (DataPoint point in chart2.Series["Status"].Points)
-            {
-                point.Label = point.AxisLabel +" "+ point.YValues[0]; // Display count within the chart
-                point.LabelForeColor = Color.Black;
-            }
-
+            DashBoard dashBoard = new DashBoard();
+            addUserControl(dashBoard);
 
         }
-
-
-
+ 
 
 
         private Color SelectThemeColor()
@@ -165,13 +114,19 @@ namespace Inventory_Management
         private void button4_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
+            DashBoard dashBoard = new DashBoard();
+            addUserControl(dashBoard);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
-            Asset_Check_Out_Form asset_Check_Out_Form = new Asset_Check_Out_Form();
-            asset_Check_Out_Form.ShowDialog();   
+           
+            // asset_Check_Out_Form.ShowDialog();   
+            AssetControl assetControl= new AssetControl();
+            addUserControl(assetControl);
+
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -212,10 +167,7 @@ namespace Inventory_Management
 
         }
 
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+      
     }
 
 
