@@ -175,7 +175,7 @@
             // 
             this.MenuPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.MenuPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(50)))), ((int)(((byte)(64)))));
+            this.MenuPanel1.BackColor = System.Drawing.Color.DarkSlateGray;
             this.MenuPanel1.Controls.Add(this.button6);
             this.MenuPanel1.Controls.Add(this.button5);
             this.MenuPanel1.Controls.Add(this.button1);
