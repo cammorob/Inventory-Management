@@ -42,6 +42,8 @@ namespace Inventory_Management
             cbType.DisplayMember = "TypeName";
             cbType.ValueMember = "Id";
             cbType.DataSource = itemtype;
+
+
         }
 
         private void btSubmit_Click(object sender, EventArgs e)

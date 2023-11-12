@@ -140,6 +140,7 @@
     <Compile Include="EditTracking.cs">
       <DependentUpon>AssetsDataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="FilteredReport.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,9 +154,17 @@
     <Compile Include="Location.cs">
       <DependentUpon>AssetsDataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="LocationCount.cs" />
+    <Compile Include="PrintReport.cs" />
     <Compile Include="QueryDataBase.cs" />
     <Compile Include="Record.cs">
       <DependentUpon>AssetsDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportsPage.Designer.cs">
+      <DependentUpon>ReportsPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Role.cs">
       <DependentUpon>AssetsDataBase.tt</DependentUpon>
@@ -217,7 +226,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReportsPage.resx">
+      <DependentUpon>ReportsPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SearchPage.resx">
       <DependentUpon>SearchPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -276,6 +289,7 @@
       <DependentUpon>AssetsDataBase.edmx</DependentUpon>
       <LastGenOutput>AssetsDataBase.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\Earthquake unit logo png.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -34,7 +34,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbBrand = new System.Windows.Forms.ComboBox();
             this.cbType = new System.Windows.Forms.ComboBox();
-            this.cbCategory = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,6 +51,7 @@
             this.btExit = new System.Windows.Forms.Button();
             this.btSubmit = new System.Windows.Forms.Button();
             this.tbAssetTag = new System.Windows.Forms.TextBox();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
             this.MainTitlePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
@@ -88,30 +88,25 @@
             // 
             // cbBrand
             // 
-            this.cbBrand.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.cbBrand.BackColor = System.Drawing.Color.LightSlateGray;
+            this.cbBrand.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbBrand.FormattingEnabled = true;
             this.cbBrand.Location = new System.Drawing.Point(68, 133);
             this.cbBrand.Name = "cbBrand";
-            this.cbBrand.Size = new System.Drawing.Size(171, 21);
+            this.cbBrand.Size = new System.Drawing.Size(171, 23);
             this.cbBrand.TabIndex = 7;
             // 
             // cbType
             // 
-            this.cbType.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.cbType.BackColor = System.Drawing.Color.LightSlateGray;
+            this.cbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbType.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbType.FormattingEnabled = true;
             this.cbType.Location = new System.Drawing.Point(68, 182);
             this.cbType.Name = "cbType";
-            this.cbType.Size = new System.Drawing.Size(171, 21);
+            this.cbType.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cbType.Size = new System.Drawing.Size(171, 23);
             this.cbType.TabIndex = 9;
-            // 
-            // cbCategory
-            // 
-            this.cbCategory.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(369, 137);
-            this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(169, 21);
-            this.cbCategory.TabIndex = 10;
             // 
             // label2
             // 
@@ -145,7 +140,8 @@
             // 
             // tbDescription
             // 
-            this.tbDescription.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.tbDescription.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbDescription.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDescription.Location = new System.Drawing.Point(123, 227);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
@@ -164,20 +160,24 @@
             // 
             // cbLocation
             // 
-            this.cbLocation.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.cbLocation.BackColor = System.Drawing.Color.LightSlateGray;
+            this.cbLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbLocation.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbLocation.FormattingEnabled = true;
             this.cbLocation.Location = new System.Drawing.Point(87, 325);
             this.cbLocation.Name = "cbLocation";
-            this.cbLocation.Size = new System.Drawing.Size(171, 21);
+            this.cbLocation.Size = new System.Drawing.Size(171, 23);
             this.cbLocation.TabIndex = 16;
             // 
             // cbStatus
             // 
-            this.cbStatus.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.cbStatus.BackColor = System.Drawing.Color.LightSlateGray;
+            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStatus.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbStatus.FormattingEnabled = true;
             this.cbStatus.Location = new System.Drawing.Point(369, 325);
             this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(171, 21);
+            this.cbStatus.Size = new System.Drawing.Size(171, 23);
             this.cbStatus.TabIndex = 17;
             // 
             // label6
@@ -212,10 +212,11 @@
             // 
             // tbSerialNo
             // 
-            this.tbSerialNo.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.tbSerialNo.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbSerialNo.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbSerialNo.Location = new System.Drawing.Point(87, 365);
             this.tbSerialNo.Name = "tbSerialNo";
-            this.tbSerialNo.Size = new System.Drawing.Size(140, 20);
+            this.tbSerialNo.Size = new System.Drawing.Size(140, 22);
             this.tbSerialNo.TabIndex = 22;
             // 
             // label9
@@ -231,10 +232,11 @@
             // dtPicker
             // 
             this.dtPicker.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.dtPicker.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtPicker.Location = new System.Drawing.Point(106, 410);
             this.dtPicker.Name = "dtPicker";
-            this.dtPicker.Size = new System.Drawing.Size(80, 20);
+            this.dtPicker.Size = new System.Drawing.Size(80, 22);
             this.dtPicker.TabIndex = 24;
             // 
             // label10
@@ -274,11 +276,23 @@
             // 
             // tbAssetTag
             // 
-            this.tbAssetTag.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.tbAssetTag.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbAssetTag.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbAssetTag.Location = new System.Drawing.Point(400, 370);
             this.tbAssetTag.Name = "tbAssetTag";
-            this.tbAssetTag.Size = new System.Drawing.Size(140, 20);
+            this.tbAssetTag.Size = new System.Drawing.Size(140, 22);
             this.tbAssetTag.TabIndex = 28;
+            // 
+            // cbCategory
+            // 
+            this.cbCategory.BackColor = System.Drawing.Color.LightSlateGray;
+            this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCategory.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCategory.FormattingEnabled = true;
+            this.cbCategory.Location = new System.Drawing.Point(369, 137);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(169, 23);
+            this.cbCategory.TabIndex = 10;
             // 
             // Add_New_Record
             // 
@@ -326,7 +340,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbBrand;
         private System.Windows.Forms.ComboBox cbType;
-        private System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -344,5 +357,6 @@
         private System.Windows.Forms.Button btExit;
         private System.Windows.Forms.Button btSubmit;
         private System.Windows.Forms.TextBox tbAssetTag;
+        private System.Windows.Forms.ComboBox cbCategory;
     }
 }

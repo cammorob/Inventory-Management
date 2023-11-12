@@ -109,6 +109,8 @@ namespace Inventory_Management
         private void button1_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
+            ReportsPage reportsPage = new ReportsPage();
+            addUserControl(reportsPage);
         }
 
         private void button4_Click(object sender, EventArgs e)
