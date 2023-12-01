@@ -13,28 +13,31 @@ namespace Inventory_Management
 {
     public class PrintReport
     {
-        private readonly System.Windows.Forms.Panel printReport;
-       
+        private DataGridView dgvToPrint;
+        private int pageNumber = 1;
+        private int pageSize = 20; // Adjust this based on your requirements
 
-        public PrintReport(System.Windows.Forms.Panel panel)
+        public PrintReport(DataGridView dataGridView)
         {
-            printReport = panel;
-            
-
+            dgvToPrint = dataGridView;
         }
+
         public void Print()
         {
-            
+            if (dgvToPrint == null)
+            {
+                MessageBox.Show("DataGridView not provided.");
+                return;
+            }
+
             PrintDocument printDocument = new PrintDocument();
             printDocument.DefaultPageSettings.PaperSize = new PaperSize("Legal", 850, 1400);
             printDocument.PrintPage += PrintPageHandler;
 
-
             PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog
             {
                 Document = printDocument
-            }; 
-        
+            };
 
             printPreviewDialog.Resize += (sender, e) => AdjustPreviewWindowSize(printPreviewDialog);
 
@@ -43,17 +46,27 @@ namespace Inventory_Management
 
         private void PrintPageHandler(object sender, PrintPageEventArgs e)
         {
-            Bitmap chartBitmap = new Bitmap(printReport.Width, printReport.Height);
-            printReport.DrawToBitmap(chartBitmap, new Rectangle(1, 1, chartBitmap.Width, chartBitmap.Height));
+            int rowsPerPage = e.MarginBounds.Height / dgvToPrint.RowTemplate.Height;
+            int rowIndex = 0;
 
-            e.Graphics.DrawImage(chartBitmap, e.PageBounds);
-           
+            while (rowIndex < rowsPerPage && pageNumber <= dgvToPrint.Rows.Count)
+            {
+                for (int columnIndex = 0; columnIndex < dgvToPrint.Columns.Count; columnIndex++)
+                {
+                    object cellValue = dgvToPrint.Rows[pageNumber - 1].Cells[columnIndex].Value;
+                    e.Graphics.DrawString(cellValue != null ? cellValue.ToString() : string.Empty,
+                        dgvToPrint.Font, Brushes.Black, e.MarginBounds.Left + columnIndex * 100,
+                        e.MarginBounds.Top + rowIndex * dgvToPrint.RowTemplate.Height);
+                }
 
+                rowIndex++;
+                pageNumber++;
+                e.HasMorePages = (rowIndex < rowsPerPage && pageNumber <= dgvToPrint.Rows.Count);
+            }
         }
+
         private void AdjustPreviewWindowSize(PrintPreviewDialog printPreviewDialog)
         {
-            // Optional: Adjust the size of the preview window as needed
-           
             const int maxWidth = 1500;
             const int maxHeight = 1200;
 
@@ -64,8 +77,11 @@ namespace Inventory_Management
             }
         }
 
-
-
+        private int CalculatePageCount(DataGridView dgv)
+        {
+            int rowCount = dgv.Rows.Count;
+            return (int)Math.Ceiling((double)rowCount / pageSize);
+        }
 
     }
 }

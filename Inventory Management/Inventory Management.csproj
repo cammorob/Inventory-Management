@@ -155,6 +155,7 @@
       <DependentUpon>AssetsDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="LocationCount.cs" />
+    <Compile Include="LocationReport.cs" />
     <Compile Include="PrintReport.cs" />
     <Compile Include="QueryDataBase.cs" />
     <Compile Include="Record.cs">
@@ -183,9 +184,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchReport.cs" />
     <Compile Include="Status.cs">
       <DependentUpon>AssetsDataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="statusReport.cs" />
     <Compile Include="StyleGridView.cs" />
     <Compile Include="themecolor.cs" />
     <Compile Include="User.cs">

@@ -29,17 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportsPage));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.statusReport = new System.Windows.Forms.Button();
+            this.btTypeReport = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.LocationReport = new System.Windows.Forms.Button();
-            this.ReportChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -48,29 +47,33 @@
             this.printReport1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.PrintPanel = new System.Windows.Forms.Panel();
+            this.reportChart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.Search = new System.Windows.Forms.Button();
+            this.lblPageNumber = new System.Windows.Forms.Label();
+            this.reportdataGridView = new System.Windows.Forms.DataGridView();
             this.Logo = new System.Windows.Forms.PictureBox();
             this.btCustomize = new System.Windows.Forms.Button();
             this.catFil = new System.Windows.Forms.ComboBox();
             this.typeFil = new System.Windows.Forms.ComboBox();
             this.statusFil = new System.Windows.Forms.ComboBox();
-            this.Search = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ReportChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PrinterBt)).BeginInit();
             this.PrintPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.reportChart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reportdataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.statusReport);
+            this.panel1.Controls.Add(this.btTypeReport);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.LocationReport);
-            this.panel1.Location = new System.Drawing.Point(0, 3);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1140, 74);
+            this.panel1.Size = new System.Drawing.Size(1143, 74);
             this.panel1.TabIndex = 0;
             // 
             // button5
@@ -83,25 +86,27 @@
             this.button5.Text = "Total Inventory Report";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // statusReport
             // 
-            this.button4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(691, 0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(220, 71);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Status Report";
-            this.button4.UseVisualStyleBackColor = true;
+            this.statusReport.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusReport.Location = new System.Drawing.Point(691, 0);
+            this.statusReport.Name = "statusReport";
+            this.statusReport.Size = new System.Drawing.Size(220, 71);
+            this.statusReport.TabIndex = 2;
+            this.statusReport.Text = "Status Report";
+            this.statusReport.UseVisualStyleBackColor = true;
+            this.statusReport.Click += new System.EventHandler(this.statusReport_Click);
             // 
-            // button3
+            // btTypeReport
             // 
-            this.button3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(465, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(220, 71);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Type Report";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btTypeReport.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btTypeReport.Location = new System.Drawing.Point(465, 0);
+            this.btTypeReport.Name = "btTypeReport";
+            this.btTypeReport.Size = new System.Drawing.Size(220, 71);
+            this.btTypeReport.TabIndex = 1;
+            this.btTypeReport.Text = "Type Report";
+            this.btTypeReport.UseVisualStyleBackColor = true;
+            this.btTypeReport.Click += new System.EventHandler(this.btTypeReport_Click);
             // 
             // button2
             // 
@@ -116,7 +121,7 @@
             // LocationReport
             // 
             this.LocationReport.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LocationReport.Location = new System.Drawing.Point(13, 0);
+            this.LocationReport.Location = new System.Drawing.Point(10, 3);
             this.LocationReport.Name = "LocationReport";
             this.LocationReport.Size = new System.Drawing.Size(220, 71);
             this.LocationReport.TabIndex = 0;
@@ -124,27 +129,11 @@
             this.LocationReport.UseVisualStyleBackColor = true;
             this.LocationReport.Click += new System.EventHandler(this.LocationReport_Click);
             // 
-            // ReportChart
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.ReportChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.ReportChart.Legends.Add(legend2);
-            this.ReportChart.Location = new System.Drawing.Point(179, 139);
-            this.ReportChart.Name = "ReportChart";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.ReportChart.Series.Add(series2);
-            this.ReportChart.Size = new System.Drawing.Size(774, 251);
-            this.ReportChart.TabIndex = 1;
-            this.ReportChart.Text = "Reportchart";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(200, 70);
+            this.label1.Location = new System.Drawing.Point(236, 99);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 17);
             this.label1.TabIndex = 2;
@@ -197,13 +186,60 @@
             // 
             // PrintPanel
             // 
+            this.PrintPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PrintPanel.Controls.Add(this.reportChart2);
+            this.PrintPanel.Controls.Add(this.Search);
+            this.PrintPanel.Controls.Add(this.lblPageNumber);
+            this.PrintPanel.Controls.Add(this.reportdataGridView);
             this.PrintPanel.Controls.Add(this.Logo);
-            this.PrintPanel.Controls.Add(this.ReportChart);
-            this.PrintPanel.Controls.Add(this.label1);
-            this.PrintPanel.Location = new System.Drawing.Point(0, 119);
+            this.PrintPanel.Location = new System.Drawing.Point(0, 122);
             this.PrintPanel.Name = "PrintPanel";
-            this.PrintPanel.Size = new System.Drawing.Size(1146, 381);
+            this.PrintPanel.Size = new System.Drawing.Size(1146, 430);
             this.PrintPanel.TabIndex = 9;
+            // 
+            // reportChart2
+            // 
+            this.reportChart2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            chartArea1.Name = "ChartArea1";
+            this.reportChart2.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.reportChart2.Legends.Add(legend1);
+            this.reportChart2.Location = new System.Drawing.Point(665, 67);
+            this.reportChart2.Name = "reportChart2";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.reportChart2.Series.Add(series1);
+            this.reportChart2.Size = new System.Drawing.Size(475, 300);
+            this.reportChart2.TabIndex = 23;
+            this.reportChart2.Text = "Report Chart";
+            // 
+            // Search
+            // 
+            this.Search.Location = new System.Drawing.Point(723, 38);
+            this.Search.Name = "Search";
+            this.Search.Size = new System.Drawing.Size(75, 23);
+            this.Search.TabIndex = 14;
+            this.Search.Text = "Search";
+            this.Search.UseVisualStyleBackColor = true;
+            this.Search.Click += new System.EventHandler(this.Search_Click);
+            // 
+            // lblPageNumber
+            // 
+            this.lblPageNumber.AutoSize = true;
+            this.lblPageNumber.Location = new System.Drawing.Point(170, 48);
+            this.lblPageNumber.Name = "lblPageNumber";
+            this.lblPageNumber.Size = new System.Drawing.Size(35, 13);
+            this.lblPageNumber.TabIndex = 22;
+            this.lblPageNumber.Text = "label2";
+            // 
+            // reportdataGridView
+            // 
+            this.reportdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.reportdataGridView.Location = new System.Drawing.Point(157, 67);
+            this.reportdataGridView.Name = "reportdataGridView";
+            this.reportdataGridView.Size = new System.Drawing.Size(502, 369);
+            this.reportdataGridView.TabIndex = 3;
             // 
             // Logo
             // 
@@ -230,18 +266,17 @@
             // 
             this.catFil.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.catFil.FormattingEnabled = true;
-            this.catFil.Location = new System.Drawing.Point(239, 90);
+            this.catFil.Location = new System.Drawing.Point(345, 93);
             this.catFil.Name = "catFil";
             this.catFil.Size = new System.Drawing.Size(142, 23);
             this.catFil.TabIndex = 3;
-            this.catFil.Text = "Select Category";
             this.catFil.SelectedIndexChanged += new System.EventHandler(this.catFil_SelectedIndexChanged);
             // 
             // typeFil
             // 
             this.typeFil.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.typeFil.FormattingEnabled = true;
-            this.typeFil.Location = new System.Drawing.Point(393, 90);
+            this.typeFil.Location = new System.Drawing.Point(493, 93);
             this.typeFil.Name = "typeFil";
             this.typeFil.Size = new System.Drawing.Size(135, 23);
             this.typeFil.TabIndex = 4;
@@ -251,46 +286,38 @@
             // 
             this.statusFil.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusFil.FormattingEnabled = true;
-            this.statusFil.Location = new System.Drawing.Point(534, 90);
+            this.statusFil.Location = new System.Drawing.Point(644, 93);
             this.statusFil.Name = "statusFil";
             this.statusFil.Size = new System.Drawing.Size(121, 23);
             this.statusFil.TabIndex = 5;
             this.statusFil.Text = "Select Status";
             // 
-            // Search
-            // 
-            this.Search.Location = new System.Drawing.Point(661, 90);
-            this.Search.Name = "Search";
-            this.Search.Size = new System.Drawing.Size(75, 23);
-            this.Search.TabIndex = 14;
-            this.Search.Text = "Search";
-            this.Search.UseVisualStyleBackColor = true;
-            this.Search.Click += new System.EventHandler(this.Search_Click);
-            // 
             // ReportsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.Search);
-            this.Controls.Add(this.statusFil);
-            this.Controls.Add(this.typeFil);
-            this.Controls.Add(this.btCustomize);
             this.Controls.Add(this.catFil);
+            this.Controls.Add(this.btCustomize);
             this.Controls.Add(this.PrinterBt);
+            this.Controls.Add(this.statusFil);
             this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.typeFil);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.PrintPanel);
             this.Name = "ReportsPage";
-            this.Size = new System.Drawing.Size(1146, 500);
+            this.Size = new System.Drawing.Size(1146, 555);
             this.Load += new System.EventHandler(this.ReportsPage_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ReportChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PrinterBt)).EndInit();
             this.PrintPanel.ResumeLayout(false);
             this.PrintPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.reportChart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reportdataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -298,11 +325,11 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button statusReport;
+        private System.Windows.Forms.Button btTypeReport;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button LocationReport;
-        private System.Windows.Forms.DataVisualization.Charting.Chart ReportChart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart reportChart;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
@@ -321,5 +348,8 @@
         private System.Windows.Forms.ComboBox typeFil;
         private System.Windows.Forms.ComboBox statusFil;
         private System.Windows.Forms.Button Search;
+        private System.Windows.Forms.DataGridView reportdataGridView;
+        private System.Windows.Forms.Label lblPageNumber;
+        private System.Windows.Forms.DataVisualization.Charting.Chart reportChart2;
     }
 }

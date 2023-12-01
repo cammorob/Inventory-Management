@@ -5,137 +5,153 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Data;
+using System.Data.Entity;
 
 namespace Inventory_Management
 {
     public class FilteredReport
     {
-
-
         private readonly EQUInventoryEntities _eQU;
         private readonly ReportsPage _reportsPage;
-        private Dictionary<int, string> locationNames;
+     //   private Dictionary<int, string> locationNames;
 
         public FilteredReport(EQUInventoryEntities eQU)
         {
+
+            //_eQU = _eQU ?? throw new ArgumentNullException(nameof(_eQU));
             _eQU = eQU ?? throw new ArgumentNullException(nameof(eQU));
-            _reportsPage = new ReportsPage();
-            locationNames = new Dictionary<int, string>();
+           
+                _reportsPage = new ReportsPage();
+          //  locationNames = new Dictionary<int, string>();
         }
 
 
-        public void PopulateChart(Chart reportChart, ComboBox catFil, ComboBox statusFil, ComboBox typeFil)
+        public void PopulateGridViewByType(DataGridView reportDataGridView)
         {
-            // Clear existing data in the chart
-            reportChart.Series.Clear();
-            reportChart.Series.Add("Categories");
+            // Clear existing data in the DataGridView
+            DataGridView dataGridView = reportDataGridView;
+            //reportDataGridView.Rows.Clear();
 
-            // Build the query based on selected criteria
-            var query = _eQU.Records.AsQueryable();
-
-            if (catFil.SelectedIndex >= 0)
+            // Get all records from the database
+            if (_eQU == null)
             {
-                var selectedCategory = (Category)catFil.SelectedItem;
-                query = query.Where(q => q.Category.Id == selectedCategory.Id);
+
+                return;
             }
 
-            if (statusFil.SelectedIndex > 0)
+            var allRecords = _eQU.Records.ToList();
+
+            // Create a DataTable to store the data
+            DataTable dataTable = new DataTable();
+
             {
-                var selectedStatus = (Status)statusFil.SelectedItem;
-                query = query.Where(q => q.Status.Id == selectedStatus.Id);
+                
+                dataTable.Columns.Add("Location", typeof(string));
+                dataTable.Columns.Add("Asset Tag", typeof(string));
+                dataTable.Columns.Add("Category", typeof(string));
+                dataTable.Columns.Add("Type", typeof(string));
+                dataTable.Columns.Add("Brand", typeof(string));
+                dataTable.Columns.Add("Description", typeof(string));
+                dataTable.Columns.Add("Serial_No", typeof(string));
+                dataTable.Columns.Add("Status", typeof(string));
+                dataTable.Columns.Add("Purchase_Date", typeof(DateTime));
+               
+            }
+            // Execute the query and add records to the DataTable
+            foreach (var record in allRecords)
+            {
+                var values = new List<object>
+        {
+            record.Location != null ? record.Location.LocationName : "Unknown Location",
+            record.AssetTag,
+            record.Category?.CategoryName,
+            record.ItemType?.TypeName,
+            record.Brand,
+            record.Description,
+            record.SerialNo,
+            record.Status?.StatusName,
+            record.PurchaseDate
+        };
+
+                dataTable.Rows.Add(values.ToArray());
             }
 
-            if (typeFil.SelectedIndex > 0)
-            {
-                var selectedType = (ItemType)typeFil.SelectedItem;
-                query = query.Where(q => q.ItemType.Id == selectedType.Id);
-            }
-
-            // Execute the query and get counts
-            var counts = query.GroupBy(q => q.Category.CategoryName)
-                              .Select(g => new { Category = g.Key, Count = g.Count() })
-                              .ToList();
-
-            // Binding the data to the chart
-            foreach (var count in counts)
-            {
-                reportChart.Series["Categories"].Points.AddXY(count.Category, count.Count);
-            }
-
-            // Customize chart appearance (you can add more customization as needed)
-            reportChart.ChartAreas[0].AxisX.LabelStyle.Font = new System.Drawing.Font("Times New Roman", 10, System.Drawing.FontStyle.Bold);
-            reportChart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
-            reportChart.ChartAreas[0].AxisY.MajorGrid.LineColor = System.Drawing.Color.LawnGreen;
-            reportChart.Series["Categories"].ChartType = SeriesChartType.Column;
-
-            foreach (DataPoint point in reportChart.Series["Categories"].Points)
-            {
-                point.Label = point.YValues[0].ToString(); // Display count within the chart
-                point.LabelForeColor = System.Drawing.Color.Black;
-            }
+            // Update the DataGridView with paged data
+            reportDataGridView.DataSource = dataTable;  
         }
 
 
-       public class LocationCount
+
+
+
+
+        public void PopulateChartByRecordType(Chart reportChart)
 {
-    public int? Location { get; set; }
-    public int Count { get; set; }
-}
+           
+           
+           //  Clear existing data in the chart
+            reportChart.Series.Clear();
+            reportChart.ChartAreas.Clear();
+            reportChart.Titles.Clear();
+           
+            reportChart.ChartAreas.Add(new ChartArea("DefaultArea"));
+           
+            // Add a single series for all record types
+            reportChart.Series.Add("Record Type");
+            if (_eQU == null)
+            {
+                
+                return;
+            }
 
-public void PopulateChartByLocation(Chart reportChart)
-{
-    // Clear existing data in the chart
-    reportChart.Series.Clear();
-    reportChart.Series.Add("Location");
+            // Get all records from the database
+            var allRecords = _eQU.Records.ToList();
 
-    // Get all records from the database
-    var allRecords = _eQU.Records.ToList();
-
-    // Execute the query and get counts
-    var counts = allRecords.GroupBy(q => q.LocationID)
-        .Select(g => new LocationCount { Location = g.Key, Count = g.Count() })
+    // Execute the query and get counts by record type
+    var countsByType = allRecords
+        .GroupBy(q => new { RecordTypeId = q.ItemType.Id, ItemName = q.ItemType.TypeName })
+        .Select(g => new { g.Key.RecordTypeId, g.Key.ItemName, Count = g.Count() })
         .ToList();
 
-    // Count records with unknown or null LocationID
-    int unknownCount = allRecords.Count(q => q.LocationID == null || q.ToString() == "NULL");
+    // Customize chart appearance
+    reportChart.ChartAreas["DefaultArea"].AxisX.LabelStyle.Font = new System.Drawing.Font("Times New Roman", 10, System.Drawing.FontStyle.Bold);
+    reportChart.ChartAreas["DefaultArea"].AxisX.MajorGrid.Enabled = false;
+    reportChart.ChartAreas["DefaultArea"].AxisY.MajorGrid.LineColor = System.Drawing.Color.LawnGreen;
+    reportChart.ChartAreas["DefaultArea"].AxisX.LabelStyle.Angle = -60;
+    reportChart.Series["Record Type"].ChartType = SeriesChartType.Column;
+            reportChart.Series["Record Type"].IsValueShownAsLabel = true;
+            reportChart.Series["Record Type"]["PointWidth"] = " 0.8";
+            reportChart.ChartAreas["DefaultArea"].Area3DStyle.IsClustered = false;
+            // Binding the data to the chart
+            int xValue = 0; // X value to differentiate between record types
 
-  // counts.Add(new LocationCount { Location = (int?)null, Count = unknownCount });
-
-    var locationNames = _eQU.Locations.ToDictionary(loc => loc.Id, loc => loc.LocationName);
-
-    // Debug output
-    foreach (var kvp in locationNames)
+    foreach (var count in countsByType)
     {
-        Console.WriteLine($"LocationID: {kvp.Key}, LocationName: {kvp.Value}");
+        // Add a data point to the series for each record type
+        reportChart.Series["Record Type"].Points.AddXY(xValue, count.Count);
+
+        // Set the data point label to display count within the chart
+        reportChart.Series["Record Type"].Points[reportChart.Series["Record Type"].Points.Count - 1].Label = count.Count.ToString();
+
+        // Set the axis label to display the record type name
+        reportChart.ChartAreas[0].AxisX.CustomLabels.Add(xValue - 0.5, xValue + 0.5, count.ItemName);
+
+        xValue++;
     }
 
-    // Binding the data to the chart
-    foreach (var count in counts)
-    {
-                string locationName = count.Location.HasValue
-                         ? locationNames.ContainsKey(count.Location.Value)
-                        ? locationNames[count.Location.Value]
-                        : "Unknown Location":
-                        "Unknown Location";
-            
+    // Use different chart types based on your preference
+    reportChart.Series["Record Type"].ChartType = SeriesChartType.Column;
+    reportChart.Series["Record Type"].IsValueShownAsLabel = true;
+    reportChart.Series["Record Type"].LabelForeColor = System.Drawing.Color.Black;
 
-        reportChart.Series["Location"].Points.AddXY(locationName, count.Count);
-    }
-
-    // Customize chart appearance (you can add more customization as needed)
-    reportChart.ChartAreas[0].AxisX.LabelStyle.Font = new System.Drawing.Font("Times New Roman", 10, System.Drawing.FontStyle.Bold);
-    reportChart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
-    reportChart.ChartAreas[0].AxisY.MajorGrid.LineColor = System.Drawing.Color.LawnGreen;
-    reportChart.Series["Location"].ChartType = SeriesChartType.Column;
-
-    foreach (DataPoint point in reportChart.Series["Location"].Points)
-    {
-        point.Label = point.YValues[0].ToString(); // Display count within the chart
-        point.LabelForeColor = System.Drawing.Color.Black;
-    }
+    // Refresh the chart
+    reportChart.Refresh();
+    reportChart.Update();
 }
 
-        
+
     }
 }
     
