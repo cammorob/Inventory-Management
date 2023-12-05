@@ -10,10 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Inventory_Management
-{
+{       
     public partial class AssetControl : UserControl
     {
 
+       
         private readonly EQUInventoryEntities _eQU;
         private DataTable originalDataTable;
         private QueryDataBase dbQuery;
@@ -25,6 +26,7 @@ namespace Inventory_Management
         {
             InitializeComponent();
             EQUInventoryEntities context = new EQUInventoryEntities();
+            _eQU = new EQUInventoryEntities();
             StyleGridView();
             dbQuery = new QueryDataBase(context);
             DisplayCurrentPage();
@@ -857,7 +859,9 @@ namespace Inventory_Management
         private void BtAdd_Click(object sender, EventArgs e)
             {
                 Add_New_Record add_New_Record = new Add_New_Record();
-                add_New_Record.ShowDialog();    
+           
+                add_New_Record.ShowDialog();  
+                
             }
         
             private void fireExtinguisherToolStripMenuItem_Click(object sender, EventArgs e)
@@ -886,5 +890,69 @@ namespace Inventory_Management
                     MessageBox.Show("An error occurred: " + ex.Message);
                 }
             }
+
+        private void EditBt_Click(object sender, EventArgs e)
+        {
+            if (AssetdataGridView1.SelectedRows.Count > 0)
+            {
+                var id = (int)AssetdataGridView1.SelectedRows[0].Cells["Id"].Value;
+                var record = _eQU.Records.FirstOrDefault(q => q.Id == id);
+                var Add_New_Record = new Add_New_Record(record);
+                Add_New_Record.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a record to edit.", "No Record Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btdelete_Click(object sender, EventArgs e)
+        {
+            if (AssetdataGridView1.SelectedRows.Count > 0)
+            {
+                var id = (int)AssetdataGridView1.SelectedRows[0].Cells["Id"].Value;
+                var record = _eQU.Records.FirstOrDefault(q => q.Id == id);
+                _eQU.Records.Remove(record);
+                _eQU.SaveChanges();
+                AssetdataGridView1.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Please select a record to delete.", "No Record Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void searchBox1_TextChanged(object sender, EventArgs e)
+        {
+            string searchTerm = searchBox1.Text.ToLower();
+
+            var filteredRecords = _eQU.Records
+                .Where(record => string.IsNullOrEmpty(searchTerm) ||
+                                 record.Brand.ToLower().Contains(searchTerm) ||
+                                 record.Category.CategoryName.ToLower().Contains(searchTerm)).
+                Select(q => new
+                {
+                    ID = q.Id,
+                    Asset_Tag = q.AssetTag,
+                    Category = q.Category.CategoryName,
+                    Type = q.ItemType.TypeName,
+                    Brand = q.Brand,
+                    Description = q.Description,
+                    Location = q.Location.LocationName,
+                    Serial_No = q.SerialNo,
+                    Status = q.Status.StatusName,
+                    Purchase_Date = q.PurchaseDate
+                })
+                .ToList();
+
+            AssetdataGridView1.DataSource = filteredRecords;
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+            query = dbQuery.GetAssetRecords();
+        }
     }
 }

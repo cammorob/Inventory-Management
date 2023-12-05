@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Reflection;
@@ -20,9 +21,11 @@ namespace Inventory_Management
     public partial class ReportsPage : UserControl
     {
         private readonly EQUInventoryEntities _eQU;
-        private DataGridView reportDataGridView;
-     
-        private Chart Chart;
+        public DataGridView reportDataGridView;
+        
+        private Chart chart;
+        int pageNumber = 1;
+        int pageSize = 15;
         public ReportsPage()
         {
             InitializeComponent();
@@ -37,9 +40,9 @@ namespace Inventory_Management
         private void InitializeComponents()
         {
             reportDataGridView = new DataGridView();
-            // ... (other initialization code)
+
         }
-        private void LoadChartData()
+        public void LoadChartData()
         {
 
             var records = _eQU.Records.ToList();
@@ -107,26 +110,56 @@ namespace Inventory_Management
         private void PrinterBt_Click(object sender, EventArgs e)
         {
 
-            PrintReport printReport = new PrintReport(reportdataGridView);
-            printReport.Print();
 
+            
+                        DGVPrinter dGV = new DGVPrinter();
+                        dGV.Title = "Asset Report ";//Header
+                        dGV.SubTitle = string.Format("Date: {0}", DateTime.Now.Date.ToString("MM/dd/yyyy"));
+                        dGV.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+                        dGV.PageNumbers = true;
+                        dGV.PageNumberInHeader = false;
+                        dGV.PorportionalColumns = true;
+
+                        dGV.HeaderCellAlignment = StringAlignment.Near;
+                        dGV.Footer = "Earthquake Unit";//Footer
+                        dGV.FooterSpacing = 15;
+
+                        //Print landscape mode
+                        dGV.printDocument.DefaultPageSettings.Landscape = true;
+                        dGV.PrintPreviewDataGridView(reportdataGridView);
+                       
+         
 
         }
+
+
+
+
+
+
+
+
+
+
 
         private void btCustomize_Click(object sender, EventArgs e)
         {
 
-            catFil.Visible = true;
-            typeFil.Visible = true;
-            statusFil.Visible = true;
-
+       
+            catFil.Enabled = true;
+            statusFil.Enabled = true;
+            typeFil.Enabled = true;
 
             var category = _eQU.Categories.ToList();
             catFil.DisplayMember = "CategoryName";
             catFil.ValueMember = "Id";
             catFil.DataSource = category;
 
-
+            if (category.Count > 0)
+            {
+                catFil.Text = "Select Category";
+                catFil.SelectedIndex = 0; // Select the first item (default value)
+            }
 
 
 
@@ -145,28 +178,46 @@ namespace Inventory_Management
 
 
 
-            //var itemtype = _eQU.ItemTypes.ToList();
-            //typeFil.DisplayMember = "TypeName";
-            // typeFil.ValueMember = "Id";
-            //typeFil.DataSource = itemtype;
+            var itemtype = _eQU.ItemTypes.ToList();
+            typeFil.DisplayMember = "TypeName";
+            typeFil.ValueMember = "Id";
+            typeFil.DataSource = itemtype;
 
-            //if (itemtype.Count > 0)
-            // {
-            //    typeFil.Text = "Select Item Type";
-            //    statusFil.SelectedIndex = 0; // Select the first item (default value)
-            // }
+            if (itemtype.Count > 0)
+            {
+               typeFil.Text = "Select Item Type";
+               statusFil.SelectedIndex = 0; // Select the first item (default value)
+             }
 
 
         }
 
         private void ReportsPage_Load(object sender, EventArgs e)
         {
-            catFil.Visible = false;
-            typeFil.Visible = false;
-            statusFil.Visible = false;
+            catFil.Enabled = false;
+            statusFil.Enabled = false;
+            typeFil.Enabled = false;
             catFil.SelectedIndexChanged += catFil_SelectedIndexChanged;
 
+            var query = _eQU.Records.Select(q => new
+            {
+                ID = q.Id,
+                Asset_Tag = q.AssetTag,
+                Category = q.Category.CategoryName,
+                Type = q.ItemType.TypeName,
+                Brand = q.Brand,
+                Description = q.Description,
+                Location = q.Location.LocationName,
+                Serial_No = q.SerialNo,
+                Status = q.Status.StatusName,
+                Purchase_Date = q.PurchaseDate
+            }).ToList();
+
+             query.Cast<object>().ToList();
             
+            reportdataGridView.DataSource = query;  
+
+
 
 
         }
@@ -206,7 +257,7 @@ namespace Inventory_Management
             }
         }
 
-        private void LocationReport_Click(object sender, EventArgs e)
+        public void LocationReport_Click(object sender, EventArgs e)
         {
 
 
@@ -218,7 +269,7 @@ namespace Inventory_Management
 
         }
 
-        private void btTypeReport_Click(object sender, EventArgs e)
+        public void btTypeReport_Click(object sender, EventArgs e)
         {
 
             EQUInventoryEntities _eQU = new EQUInventoryEntities(); 
@@ -277,6 +328,18 @@ namespace Inventory_Management
             stReport.DisplayByStatus(reportdataGridView, lblPageNumber,"Working" , "Not Working");
             stReport.LoadChart(reportChart2);
 
+        }
+
+        private void printReport1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            if (bmp != null)
+            {
+                e.Graphics.DrawImage(bmp, 0, 0);
+            }
+            else
+            {
+                MessageBox.Show("No data to print.");
+            }
         }
     }
 }

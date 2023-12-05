@@ -41,17 +41,14 @@
             this.LocationReport = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.PrinterBt = new System.Windows.Forms.PictureBox();
             this.printReport1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.PrintPanel = new System.Windows.Forms.Panel();
             this.reportChart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.Search = new System.Windows.Forms.Button();
             this.lblPageNumber = new System.Windows.Forms.Label();
             this.reportdataGridView = new System.Windows.Forms.DataGridView();
-            this.Logo = new System.Windows.Forms.PictureBox();
+            this.Search = new System.Windows.Forms.Button();
             this.btCustomize = new System.Windows.Forms.Button();
             this.catFil = new System.Windows.Forms.ComboBox();
             this.typeFil = new System.Windows.Forms.ComboBox();
@@ -61,7 +58,6 @@
             this.PrintPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reportChart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportdataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -144,22 +140,6 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(785, 96);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(81, 20);
-            this.dateTimePicker1.TabIndex = 6;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(872, 96);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(84, 20);
-            this.dateTimePicker2.TabIndex = 7;
-            // 
             // PrinterBt
             // 
             this.PrinterBt.Image = ((System.Drawing.Image)(resources.GetObject("PrinterBt.Image")));
@@ -172,6 +152,10 @@
             this.PrinterBt.Click += new System.EventHandler(this.PrinterBt_Click);
             this.PrinterBt.MouseLeave += new System.EventHandler(this.PrinterIcon_MouseLeave);
             this.PrinterBt.MouseHover += new System.EventHandler(this.PrinterIcon_MouseHover);
+            // 
+            // printReport1
+            // 
+            this.printReport1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printReport1_PrintPage);
             // 
             // printPreviewDialog1
             // 
@@ -188,10 +172,8 @@
             // 
             this.PrintPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PrintPanel.Controls.Add(this.reportChart2);
-            this.PrintPanel.Controls.Add(this.Search);
             this.PrintPanel.Controls.Add(this.lblPageNumber);
             this.PrintPanel.Controls.Add(this.reportdataGridView);
-            this.PrintPanel.Controls.Add(this.Logo);
             this.PrintPanel.Location = new System.Drawing.Point(0, 122);
             this.PrintPanel.Name = "PrintPanel";
             this.PrintPanel.Size = new System.Drawing.Size(1146, 430);
@@ -204,30 +186,20 @@
             this.reportChart2.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.reportChart2.Legends.Add(legend1);
-            this.reportChart2.Location = new System.Drawing.Point(665, 67);
+            this.reportChart2.Location = new System.Drawing.Point(757, 67);
             this.reportChart2.Name = "reportChart2";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.reportChart2.Series.Add(series1);
-            this.reportChart2.Size = new System.Drawing.Size(475, 300);
+            this.reportChart2.Size = new System.Drawing.Size(383, 300);
             this.reportChart2.TabIndex = 23;
             this.reportChart2.Text = "Report Chart";
-            // 
-            // Search
-            // 
-            this.Search.Location = new System.Drawing.Point(723, 38);
-            this.Search.Name = "Search";
-            this.Search.Size = new System.Drawing.Size(75, 23);
-            this.Search.TabIndex = 14;
-            this.Search.Text = "Search";
-            this.Search.UseVisualStyleBackColor = true;
-            this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
             // lblPageNumber
             // 
             this.lblPageNumber.AutoSize = true;
-            this.lblPageNumber.Location = new System.Drawing.Point(170, 48);
+            this.lblPageNumber.Location = new System.Drawing.Point(3, 51);
             this.lblPageNumber.Name = "lblPageNumber";
             this.lblPageNumber.Size = new System.Drawing.Size(35, 13);
             this.lblPageNumber.TabIndex = 22;
@@ -236,27 +208,28 @@
             // reportdataGridView
             // 
             this.reportdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.reportdataGridView.Location = new System.Drawing.Point(157, 67);
+            this.reportdataGridView.Location = new System.Drawing.Point(3, 67);
             this.reportdataGridView.Name = "reportdataGridView";
-            this.reportdataGridView.Size = new System.Drawing.Size(502, 369);
+            this.reportdataGridView.Size = new System.Drawing.Size(748, 369);
             this.reportdataGridView.TabIndex = 3;
             // 
-            // Logo
+            // Search
             // 
-            this.Logo.Image = global::Inventory_Management.Properties.Resources.Earthquake_unit_logo_png;
-            this.Logo.Location = new System.Drawing.Point(13, 15);
-            this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(138, 72);
-            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Logo.TabIndex = 2;
-            this.Logo.TabStop = false;
+            this.Search.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Search.Location = new System.Drawing.Point(771, 93);
+            this.Search.Name = "Search";
+            this.Search.Size = new System.Drawing.Size(75, 23);
+            this.Search.TabIndex = 14;
+            this.Search.Text = "Filter";
+            this.Search.UseVisualStyleBackColor = true;
+            this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
             // btCustomize
             // 
             this.btCustomize.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btCustomize.Location = new System.Drawing.Point(13, 80);
+            this.btCustomize.Location = new System.Drawing.Point(77, 93);
             this.btCustomize.Name = "btCustomize";
-            this.btCustomize.Size = new System.Drawing.Size(220, 36);
+            this.btCustomize.Size = new System.Drawing.Size(153, 27);
             this.btCustomize.TabIndex = 13;
             this.btCustomize.Text = "Customize Report";
             this.btCustomize.UseVisualStyleBackColor = true;
@@ -296,13 +269,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Search);
             this.Controls.Add(this.catFil);
             this.Controls.Add(this.btCustomize);
             this.Controls.Add(this.PrinterBt);
             this.Controls.Add(this.statusFil);
-            this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.typeFil);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.PrintPanel);
@@ -315,7 +287,6 @@
             this.PrintPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reportChart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportdataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,13 +303,10 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart reportChart;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.PictureBox PrinterBt;
         private System.Drawing.Printing.PrintDocument printReport1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Panel PrintPanel;
-        private System.Windows.Forms.PictureBox Logo;
         private System.Windows.Forms.TextBox statusFilter;
         private System.Windows.Forms.ListBox catFilter;
         private System.Windows.Forms.ListBox typeFilter;
@@ -348,8 +316,8 @@
         private System.Windows.Forms.ComboBox typeFil;
         private System.Windows.Forms.ComboBox statusFil;
         private System.Windows.Forms.Button Search;
-        private System.Windows.Forms.DataGridView reportdataGridView;
         private System.Windows.Forms.Label lblPageNumber;
-        private System.Windows.Forms.DataVisualization.Charting.Chart reportChart2;
+        public System.Windows.Forms.DataGridView reportdataGridView;
+        public System.Windows.Forms.DataVisualization.Charting.Chart reportChart2;
     }
 }

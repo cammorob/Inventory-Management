@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_New_Record));
             this.MainTitlePanel = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.addEditlabel = new System.Windows.Forms.Label();
             this.cbBrand = new System.Windows.Forms.ComboBox();
             this.cbType = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,6 +52,7 @@
             this.btSubmit = new System.Windows.Forms.Button();
             this.tbAssetTag = new System.Windows.Forms.TextBox();
             this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.lblID = new System.Windows.Forms.Label();
             this.MainTitlePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
@@ -76,15 +77,14 @@
             this.pictureBox3.TabIndex = 1;
             this.pictureBox3.TabStop = false;
             // 
-            // label1
+            // addEditlabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(233, 69);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 19);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "New Entry";
+            this.addEditlabel.AutoSize = true;
+            this.addEditlabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addEditlabel.Location = new System.Drawing.Point(233, 69);
+            this.addEditlabel.Name = "addEditlabel";
+            this.addEditlabel.Size = new System.Drawing.Size(0, 19);
+            this.addEditlabel.TabIndex = 6;
             // 
             // cbBrand
             // 
@@ -260,6 +260,7 @@
             this.btExit.TabIndex = 26;
             this.btExit.Text = "Exit";
             this.btExit.UseVisualStyleBackColor = false;
+            this.btExit.Click += new System.EventHandler(this.btExit_Click);
             // 
             // btSubmit
             // 
@@ -294,11 +295,22 @@
             this.cbCategory.Size = new System.Drawing.Size(169, 23);
             this.cbCategory.TabIndex = 10;
             // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(426, 101);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(35, 13);
+            this.lblID.TabIndex = 29;
+            this.lblID.Text = "label1";
+            this.lblID.Visible = false;
+            // 
             // Add_New_Record
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(569, 506);
+            this.Controls.Add(this.lblID);
             this.Controls.Add(this.tbAssetTag);
             this.Controls.Add(this.btSubmit);
             this.Controls.Add(this.btExit);
@@ -319,7 +331,7 @@
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.cbType);
             this.Controls.Add(this.cbBrand);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.addEditlabel);
             this.Controls.Add(this.MainTitlePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Add_New_Record";
@@ -337,7 +349,7 @@
 
         private System.Windows.Forms.Panel MainTitlePanel;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label addEditlabel;
         private System.Windows.Forms.ComboBox cbBrand;
         private System.Windows.Forms.ComboBox cbType;
         private System.Windows.Forms.Label label2;
@@ -358,5 +370,6 @@
         private System.Windows.Forms.Button btSubmit;
         private System.Windows.Forms.TextBox tbAssetTag;
         private System.Windows.Forms.ComboBox cbCategory;
+        private System.Windows.Forms.Label lblID;
     }
 }

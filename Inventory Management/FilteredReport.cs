@@ -15,7 +15,9 @@ namespace Inventory_Management
     {
         private readonly EQUInventoryEntities _eQU;
         private readonly ReportsPage _reportsPage;
-     //   private Dictionary<int, string> locationNames;
+        int pageNumber = 1;
+        int pageSize = 15;
+        //   private Dictionary<int, string> locationNames;
 
         public FilteredReport(EQUInventoryEntities eQU)
         {
@@ -44,7 +46,7 @@ namespace Inventory_Management
             var allRecords = _eQU.Records.ToList();
 
             // Create a DataTable to store the data
-            DataTable dataTable = new DataTable();
+             DataTable dataTable = new DataTable();
 
             {
                 

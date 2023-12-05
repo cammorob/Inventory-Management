@@ -67,9 +67,11 @@
             this.uPSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.surgeProtectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.routerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fireExtinguisherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.AssetdataGridView1 = new System.Windows.Forms.DataGridView();
-            this.fireExtinguisherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditBt = new System.Windows.Forms.Button();
+            this.btdelete = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AssetdataGridView1)).BeginInit();
@@ -95,10 +97,12 @@
             this.button6.TabIndex = 5;
             this.button6.Text = "Refresh";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel3.Controls.Add(this.EditBt);
             this.panel3.Controls.Add(this.BtAdd);
             this.panel3.Controls.Add(this.searchBox1);
             this.panel3.Controls.Add(this.lblPageNumber);
@@ -116,7 +120,7 @@
             // BtAdd
             // 
             this.BtAdd.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtAdd.Location = new System.Drawing.Point(960, 7);
+            this.BtAdd.Location = new System.Drawing.Point(947, 9);
             this.BtAdd.Name = "BtAdd";
             this.BtAdd.Size = new System.Drawing.Size(95, 24);
             this.BtAdd.TabIndex = 24;
@@ -131,6 +135,7 @@
             this.searchBox1.Name = "searchBox1";
             this.searchBox1.Size = new System.Drawing.Size(265, 26);
             this.searchBox1.TabIndex = 22;
+            this.searchBox1.TextChanged += new System.EventHandler(this.searchBox1_TextChanged);
             // 
             // lblPageNumber
             // 
@@ -183,7 +188,7 @@
             this.filterToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(107, 8);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(178, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(58, 24);
             this.menuStrip2.TabIndex = 23;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -308,7 +313,7 @@
             this.kitchenToolStripMenuItem.Name = "kitchenToolStripMenuItem";
             this.kitchenToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.kitchenToolStripMenuItem.Text = "Kitchen";
-           this.kitchenToolStripMenuItem.Click += new System.EventHandler(this.kitchenToolStripMenuItem_Click);
+            this.kitchenToolStripMenuItem.Click += new System.EventHandler(this.kitchenToolStripMenuItem_Click);
             // 
             // centralRecordingStationToolStripMenuItem
             // 
@@ -340,85 +345,92 @@
             this.routerToolStripMenuItem,
             this.fireExtinguisherToolStripMenuItem});
             this.typeToolStripMenuItem.Name = "typeToolStripMenuItem";
-            this.typeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.typeToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.typeToolStripMenuItem.Text = "Type";
             // 
             // monitorToolStripMenuItem
             // 
             this.monitorToolStripMenuItem.Name = "monitorToolStripMenuItem";
-            this.monitorToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.monitorToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.monitorToolStripMenuItem.Text = "Monitor";
             this.monitorToolStripMenuItem.Click += new System.EventHandler(this.monitorToolStripMenuItem_Click);
             // 
             // keypoardToolStripMenuItem
             // 
             this.keypoardToolStripMenuItem.Name = "keypoardToolStripMenuItem";
-            this.keypoardToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.keypoardToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.keypoardToolStripMenuItem.Text = "Keypoard";
             this.keypoardToolStripMenuItem.Click += new System.EventHandler(this.keypoardToolStripMenuItem_Click);
             // 
             // desktopToolStripMenuItem
             // 
             this.desktopToolStripMenuItem.Name = "desktopToolStripMenuItem";
-            this.desktopToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.desktopToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.desktopToolStripMenuItem.Text = "Desktop";
             this.desktopToolStripMenuItem.Click += new System.EventHandler(this.desktopToolStripMenuItem_Click);
             // 
             // laptopToolStripMenuItem
             // 
             this.laptopToolStripMenuItem.Name = "laptopToolStripMenuItem";
-            this.laptopToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.laptopToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.laptopToolStripMenuItem.Text = "Laptop";
             this.laptopToolStripMenuItem.Click += new System.EventHandler(this.laptopToolStripMenuItem_Click);
             // 
             // serverToolStripMenuItem
             // 
             this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
-            this.serverToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.serverToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.serverToolStripMenuItem.Text = "Server";
             this.serverToolStripMenuItem.Click += new System.EventHandler(this.serverToolStripMenuItem_Click);
             // 
             // networkStorageToolStripMenuItem
             // 
             this.networkStorageToolStripMenuItem.Name = "networkStorageToolStripMenuItem";
-            this.networkStorageToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.networkStorageToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.networkStorageToolStripMenuItem.Text = "Network Storage";
             this.networkStorageToolStripMenuItem.Click += new System.EventHandler(this.networkStorageToolStripMenuItem_Click);
             // 
             // printerToolStripMenuItem
             // 
             this.printerToolStripMenuItem.Name = "printerToolStripMenuItem";
-            this.printerToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.printerToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.printerToolStripMenuItem.Text = "Printer";
             this.printerToolStripMenuItem.Click += new System.EventHandler(this.printerToolStripMenuItem_Click);
             // 
             // switchToolStripMenuItem
             // 
             this.switchToolStripMenuItem.Name = "switchToolStripMenuItem";
-            this.switchToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.switchToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.switchToolStripMenuItem.Text = "Switch";
             this.switchToolStripMenuItem.Click += new System.EventHandler(this.switchToolStripMenuItem_Click);
             // 
             // uPSToolStripMenuItem
             // 
             this.uPSToolStripMenuItem.Name = "uPSToolStripMenuItem";
-            this.uPSToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.uPSToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.uPSToolStripMenuItem.Text = "UPS";
             this.uPSToolStripMenuItem.Click += new System.EventHandler(this.uPSToolStripMenuItem_Click);
             // 
             // surgeProtectorToolStripMenuItem
             // 
             this.surgeProtectorToolStripMenuItem.Name = "surgeProtectorToolStripMenuItem";
-            this.surgeProtectorToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.surgeProtectorToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.surgeProtectorToolStripMenuItem.Text = "Surge Protector";
             this.surgeProtectorToolStripMenuItem.Click += new System.EventHandler(this.surgeProtectorToolStripMenuItem_Click);
             // 
             // routerToolStripMenuItem
             // 
             this.routerToolStripMenuItem.Name = "routerToolStripMenuItem";
-            this.routerToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.routerToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.routerToolStripMenuItem.Text = "Router";
             this.routerToolStripMenuItem.Click += new System.EventHandler(this.routerToolStripMenuItem_Click);
+            // 
+            // fireExtinguisherToolStripMenuItem
+            // 
+            this.fireExtinguisherToolStripMenuItem.Name = "fireExtinguisherToolStripMenuItem";
+            this.fireExtinguisherToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.fireExtinguisherToolStripMenuItem.Text = "Fire Extinguisher";
+            this.fireExtinguisherToolStripMenuItem.Click += new System.EventHandler(this.fireExtinguisherToolStripMenuItem_Click);
             // 
             // button1
             // 
@@ -446,17 +458,34 @@
             this.AssetdataGridView1.Size = new System.Drawing.Size(1140, 450);
             this.AssetdataGridView1.TabIndex = 16;
             // 
-            // fireExtinguisherToolStripMenuItem
+            // EditBt
             // 
-            this.fireExtinguisherToolStripMenuItem.Name = "fireExtinguisherToolStripMenuItem";
-            this.fireExtinguisherToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.fireExtinguisherToolStripMenuItem.Text = "Fire Extinguisher";
-            this.fireExtinguisherToolStripMenuItem.Click += new System.EventHandler(this.fireExtinguisherToolStripMenuItem_Click);
+            this.EditBt.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditBt.Location = new System.Drawing.Point(1045, 8);
+            this.EditBt.Name = "EditBt";
+            this.EditBt.Size = new System.Drawing.Size(95, 24);
+            this.EditBt.TabIndex = 25;
+            this.EditBt.Text = "Edit ";
+            this.EditBt.UseVisualStyleBackColor = true;
+            this.EditBt.Click += new System.EventHandler(this.EditBt_Click);
+            // 
+            // btdelete
+            // 
+            this.btdelete.BackColor = System.Drawing.Color.Red;
+            this.btdelete.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btdelete.Location = new System.Drawing.Point(1033, 457);
+            this.btdelete.Name = "btdelete";
+            this.btdelete.Size = new System.Drawing.Size(95, 24);
+            this.btdelete.TabIndex = 26;
+            this.btdelete.Text = "Delete";
+            this.btdelete.UseVisualStyleBackColor = false;
+            this.btdelete.Click += new System.EventHandler(this.btdelete_Click);
             // 
             // AssetControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btdelete);
             this.Controls.Add(this.AssetdataGridView1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.button5);
@@ -517,5 +546,7 @@
         private System.Windows.Forms.ToolStripMenuItem routerToolStripMenuItem;
         private System.Windows.Forms.Button BtAdd;
         private System.Windows.Forms.ToolStripMenuItem fireExtinguisherToolStripMenuItem;
+        private System.Windows.Forms.Button EditBt;
+        private System.Windows.Forms.Button btdelete;
     }
 }

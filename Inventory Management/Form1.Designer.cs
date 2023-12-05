@@ -45,15 +45,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.dataSet1 = new System.Data.DataSet();
+            this.mainLbL = new System.Windows.Forms.Label();
             this.MainTitlePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.MenuPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -233,6 +231,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.LightSlateGray;
+            this.panel3.Controls.Add(this.mainLbL);
             this.panel3.Controls.Add(this.DashBoardDock);
             this.panel3.Controls.Add(this.button7);
             this.panel3.Controls.Add(this.label1);
@@ -284,25 +283,23 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.LightSlateGray;
-            this.panel6.Controls.Add(this.pictureBox2);
             this.panel6.Location = new System.Drawing.Point(0, 80);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(221, 75);
             this.panel6.TabIndex = 10;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(168, 6);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(73, 50);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
             // dataSet1
             // 
             this.dataSet1.DataSetName = "NewDataSet";
+            // 
+            // mainLbL
+            // 
+            this.mainLbL.AutoSize = true;
+            this.mainLbL.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainLbL.Location = new System.Drawing.Point(30, 30);
+            this.mainLbL.Name = "mainLbL";
+            this.mainLbL.Size = new System.Drawing.Size(0, 26);
+            this.mainLbL.TabIndex = 17;
             // 
             // Form1
             // 
@@ -327,8 +324,6 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             this.ResumeLayout(false);
 
@@ -346,13 +341,13 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button7;
         private System.Data.DataSet dataSet1;
         private System.Windows.Forms.Panel DashBoardDock;
+        private System.Windows.Forms.Label mainLbL;
     }
 }
 

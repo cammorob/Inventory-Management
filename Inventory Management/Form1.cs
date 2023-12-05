@@ -49,9 +49,11 @@ namespace Inventory_Management
 
             DashBoard dashBoard = new DashBoard();
             addUserControl(dashBoard);
+            mainLbL.Text = "Dash Board";
+
 
         }
- 
+
 
 
         private Color SelectThemeColor()
@@ -111,6 +113,7 @@ namespace Inventory_Management
             ActivateButton(sender);
             ReportsPage reportsPage = new ReportsPage();
             addUserControl(reportsPage);
+            mainLbL.Text = "Reports";
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -118,6 +121,7 @@ namespace Inventory_Management
             ActivateButton(sender);
             DashBoard dashBoard = new DashBoard();
             addUserControl(dashBoard);
+            mainLbL.Text = "Dash Board";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -127,6 +131,7 @@ namespace Inventory_Management
             // asset_Check_Out_Form.ShowDialog();   
             AssetControl assetControl= new AssetControl();
             addUserControl(assetControl);
+            mainLbL.Text = "Assets";
 
 
         }
@@ -159,8 +164,11 @@ namespace Inventory_Management
         private void button5_Click_1(object sender, EventArgs e)
         {
             ActivateButton(sender);
-            UserAdmin userAdmin=new UserAdmin();    
-            userAdmin.ShowDialog(); 
+            UserAdministration userAdministration = new UserAdministration();
+            AssetControl assetControl = new AssetControl();
+            addUserControl(userAdministration);
+
+            mainLbL.Text = "User Administration";
 
         }
 
