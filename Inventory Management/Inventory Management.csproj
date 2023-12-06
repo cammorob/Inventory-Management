@@ -136,9 +136,15 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -146,11 +152,34 @@
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Cng, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Cng.5.0.0\lib\net47\System.Security.Cryptography.Cng.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
@@ -175,12 +204,6 @@
     </Compile>
     <Compile Include="AddEditUser.Designer.cs">
       <DependentUpon>AddEditUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Asset.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Asset.Designer.cs">
-      <DependentUpon>Asset.cs</DependentUpon>
     </Compile>
     <Compile Include="AssetControl.cs">
       <SubType>UserControl</SubType>
@@ -271,12 +294,6 @@
     <Compile Include="User.cs">
       <DependentUpon>AssetsDataBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserAdmin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserAdmin.Designer.cs">
-      <DependentUpon>UserAdmin.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserAdministration.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -286,14 +303,12 @@
     <Compile Include="UserRole.cs">
       <DependentUpon>AssetsDataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Add Edit Record.resx">
       <DependentUpon>Add Edit Record.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddEditUser.resx">
       <DependentUpon>AddEditUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Asset.resx">
-      <DependentUpon>Asset.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AssetControl.resx">
       <DependentUpon>AssetControl.cs</DependentUpon>
@@ -322,9 +337,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SearchPage.resx">
       <DependentUpon>SearchPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserAdmin.resx">
-      <DependentUpon>UserAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserAdministration.resx">
       <DependentUpon>UserAdministration.cs</DependentUpon>

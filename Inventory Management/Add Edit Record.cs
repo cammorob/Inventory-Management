@@ -25,6 +25,7 @@ namespace Inventory_Management
             addEditlabel.Text = "Add New Record";
             formMode = false;
             _eQU = new EQUInventoryEntities();
+            loadDataPoints();
         }
         public Add_New_Record(Record recordToEdit)
         {
@@ -33,25 +34,66 @@ namespace Inventory_Management
             InitializeComponent();
             addEditlabel.Text = "Edit Record";
             _eQU = new EQUInventoryEntities();
+            loadDataPoints();
             populateFields(recordToEdit);
             formMode = true;
 
+
         }
 
-        private void populateFields(Record record)
+        private void populateFields(Record recordToEdit)
         {
-            lblID.Text = (record?.Id ?? 0).ToString();
-            cbBrand.Text = record?.Brand ?? "";
-            cbCategory.Text = record?.Category?.CategoryName ?? "";
-            cbLocation.Text = record?.Location?.LocationName ?? "";
-            cbStatus.Text = record?.Status?.StatusName ?? "";
-            cbType.Text = record?.ItemType?.TypeName ?? "";
-            tbAssetTag.Text = record?.AssetTag ?? "";
-            tbDescription.Text = record?.Description ?? "";
-            tbSerialNo.Text = record?.SerialNo ?? "";
-            if (record.PurchaseDate.HasValue)
+            
+            if (recordToEdit.CategoryID != null)
             {
-                dtPicker.Value = record.PurchaseDate.Value;
+                // Check if the CategoryID is not null and set the selected value
+                cbCategory.SelectedValue = recordToEdit.CategoryID;  // Potential issue here
+            }
+            else
+            {
+                cbCategory.SelectedValue = -1;
+            }
+            
+            if (recordToEdit.LocationID != null)
+            {
+                // Check if the CategoryID is not null and set the selected value
+                cbLocation.SelectedValue = recordToEdit.LocationID;  // Potential issue here
+            }
+            else
+            {
+                cbLocation.SelectedValue = -1;
+            }
+
+            
+            if (recordToEdit.StatusID != null)
+            {
+                // Check if the CategoryID is not null and set the selected value
+                cbStatus.SelectedValue = recordToEdit.StatusID;  // Potential issue here
+            }
+            else
+            {
+                cbStatus.SelectedValue = -1;
+            }
+
+            
+            if (recordToEdit.TypeID != null)
+            {
+                // Check if the CategoryID is not null and set the selected value
+                cbType.SelectedValue = recordToEdit.TypeID;  // Potential issue here
+            }
+            else
+            {
+                cbType.SelectedValue = -1;
+            }
+            
+          
+            tbAssetTag.Text = recordToEdit?.AssetTag ?? "";
+            tbDescription.Text = recordToEdit?.Description ?? "";
+            tbSerialNo.Text = recordToEdit?.SerialNo ?? "";
+
+            if (recordToEdit.PurchaseDate.HasValue)
+            {
+                dtPicker.Value = recordToEdit.PurchaseDate.Value;
             }
             else
             {
@@ -60,12 +102,21 @@ namespace Inventory_Management
                 dtPicker.Format = DateTimePickerFormat.Custom;
             }
 
-
+            
 
 
         }
 
         private void Add_New_Record_Load(object sender, EventArgs e)
+        {
+
+         
+
+        }
+
+
+
+        private void loadDataPoints()
         {
 
             // Categories
@@ -96,6 +147,7 @@ namespace Inventory_Management
             cbType.ValueMember = "Id";
             cbType.DataSource = itemTypeList;
 
+            
 
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -81,9 +82,22 @@ namespace Inventory_Management
 
         private void btEdit_Click(object sender, EventArgs e)
         {
-            var ativate = _eQU.Users.ToList();
-            AddEditUser addEditUser = new AddEditUser();
-            addEditUser.ShowDialog();
+           
+
+            if (usersGridView1.SelectedRows.Count > 0)
+            {
+                var id = (int)usersGridView1.SelectedRows[0].Cells["Id"].Value;
+
+                // Use await to get the actual User object
+                var user = _eQU.Users.FirstOrDefaultAsync(q => q.Id == id).Result;
+
+                AddEditUser addEditUser = new AddEditUser(user);
+                addEditUser.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a record to edit.", "No Record Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btResetPassword_Click_1(object sender, EventArgs e)

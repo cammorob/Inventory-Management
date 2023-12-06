@@ -3,10 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Security;
 using System.Windows.Forms;
 using static Inventory_Management.DGVPrinter;
 
@@ -23,6 +25,7 @@ namespace Inventory_Management
             AddEditUserlbl.Text = "Add New User";
             formMode = false;
             _eQU = new EQUInventoryEntities();
+            UserOptions();
         }
 
         public AddEditUser(User UserToEdit)
@@ -30,26 +33,59 @@ namespace Inventory_Management
 
 
             InitializeComponent();
-            AddEditUserlbl.Text = "Edit Record";
+            AddEditUserlbl.Text = "Edit User";
             _eQU = new EQUInventoryEntities();
             populateFields(UserToEdit);
             formMode = true;
-
+          // UserOptions();
 
 
         }
 
         private void populateFields(User UserToEdit)
         {
+            var roles = _eQU.Roles.ToList();
+            roles.Insert(0, new Role { Id = -1, RoleName = "Select Option" });
 
-            lblID.Text = (UserToEdit?.Id ?? 0).ToString();
-            tbUserName.Text = UserToEdit?.Username ?? "";
-            cbUserRole.SelectedValue= UserToEdit?.UserRoles?.ToString();
-            tbPassword.Text = UserToEdit?.Password.ToString();
+            cbUserRole.DisplayMember = "RoleName";
+            cbUserRole.ValueMember = "Id";
+            cbUserRole.DataSource = roles;
+
+            tbUserName.Text = UserToEdit.Username ?? "";
+            tbPassword.Text = UserToEdit.Password ?? "";
             cbActiveMode.Text = UserToEdit.isActive.HasValue ? UserToEdit.isActive.Value.ToString() : "";
+
+           
+            if (UserToEdit.UserRoles.Any())
+            {
+                cbUserRole.SelectedValue = UserToEdit.UserRoles.First().RoleID;
+            }
+            else
+            {
+               
+                cbUserRole.SelectedValue = -1;
+            }
 
         }
 
+        private void UserOptions()
+        {
+
+            var roles = _eQU.Roles.ToList();
+            roles.Insert(0, new Role { Id = -1, RoleName = "Select Option" });
+            cbUserRole.DisplayMember = "RoleName";
+            cbUserRole.ValueMember = "Id";
+            cbUserRole.DataSource = roles;
+
+            var active = _eQU.Users.ToList();
+            //users.Insert(0, new User { Id = -1, isActive = "Select Option" });
+            cbActiveMode.DisplayMember = "isActive";
+            cbActiveMode.ValueMember = "isActive";
+            cbActiveMode.DataSource = active; 
+
+
+
+        }
         private void btSubmit_Click(object sender, EventArgs e)
         {
 

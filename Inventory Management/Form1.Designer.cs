@@ -31,22 +31,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btAssets = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.MainTitlePanel = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.FPHeader = new System.Windows.Forms.Label();
             this.MenuPanel1 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btManageUsers = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.mainLbL = new System.Windows.Forms.Label();
             this.DashBoardDock = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dataSet1 = new System.Data.DataSet();
-            this.mainLbL = new System.Windows.Forms.Label();
             this.MainTitlePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.MenuPanel1.SuspendLayout();
@@ -96,25 +95,25 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
+            // btAssets
             // 
-            this.button2.AutoSize = true;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(0, 72);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(221, 72);
-            this.button2.TabIndex = 3;
-            this.button2.Text = " Assets";
-            this.button2.UseMnemonic = false;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btAssets.AutoSize = true;
+            this.btAssets.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btAssets.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btAssets.FlatAppearance.BorderSize = 0;
+            this.btAssets.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btAssets.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAssets.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btAssets.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btAssets.Location = new System.Drawing.Point(0, 72);
+            this.btAssets.Name = "btAssets";
+            this.btAssets.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btAssets.Size = new System.Drawing.Size(221, 72);
+            this.btAssets.TabIndex = 3;
+            this.btAssets.Text = " Assets";
+            this.btAssets.UseMnemonic = false;
+            this.btAssets.UseVisualStyleBackColor = true;
+            this.btAssets.Click += new System.EventHandler(this.btAssets_Click);
             // 
             // button1
             // 
@@ -174,10 +173,9 @@
             this.MenuPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.MenuPanel1.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.MenuPanel1.Controls.Add(this.button6);
-            this.MenuPanel1.Controls.Add(this.button5);
+            this.MenuPanel1.Controls.Add(this.btManageUsers);
             this.MenuPanel1.Controls.Add(this.button1);
-            this.MenuPanel1.Controls.Add(this.button2);
+            this.MenuPanel1.Controls.Add(this.btAssets);
             this.MenuPanel1.Controls.Add(this.button4);
             this.MenuPanel1.Controls.Add(this.button3);
             this.MenuPanel1.Location = new System.Drawing.Point(0, 155);
@@ -185,45 +183,25 @@
             this.MenuPanel1.Size = new System.Drawing.Size(221, 500);
             this.MenuPanel1.TabIndex = 6;
             // 
-            // button6
+            // btManageUsers
             // 
-            this.button6.AutoSize = true;
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(0, 288);
-            this.button6.Name = "button6";
-            this.button6.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.button6.Size = new System.Drawing.Size(221, 72);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "Settings";
-            this.button6.UseMnemonic = false;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button5
-            // 
-            this.button5.AutoSize = true;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(0, 216);
-            this.button5.Name = "button5";
-            this.button5.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.button5.Size = new System.Drawing.Size(221, 72);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "User Administration";
-            this.button5.UseMnemonic = false;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            this.btManageUsers.AutoSize = true;
+            this.btManageUsers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btManageUsers.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btManageUsers.FlatAppearance.BorderSize = 0;
+            this.btManageUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btManageUsers.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btManageUsers.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btManageUsers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btManageUsers.Location = new System.Drawing.Point(0, 216);
+            this.btManageUsers.Name = "btManageUsers";
+            this.btManageUsers.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btManageUsers.Size = new System.Drawing.Size(221, 72);
+            this.btManageUsers.TabIndex = 7;
+            this.btManageUsers.Text = "User Administration";
+            this.btManageUsers.UseMnemonic = false;
+            this.btManageUsers.UseVisualStyleBackColor = true;
+            this.btManageUsers.Click += new System.EventHandler(this.btManageUsers_Click);
             // 
             // panel3
             // 
@@ -241,6 +219,15 @@
             this.panel3.Size = new System.Drawing.Size(1143, 575);
             this.panel3.TabIndex = 9;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // mainLbL
+            // 
+            this.mainLbL.AutoSize = true;
+            this.mainLbL.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainLbL.Location = new System.Drawing.Point(30, 30);
+            this.mainLbL.Name = "mainLbL";
+            this.mainLbL.Size = new System.Drawing.Size(0, 26);
+            this.mainLbL.TabIndex = 17;
             // 
             // DashBoardDock
             // 
@@ -292,15 +279,6 @@
             // 
             this.dataSet1.DataSetName = "NewDataSet";
             // 
-            // mainLbL
-            // 
-            this.mainLbL.AutoSize = true;
-            this.mainLbL.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainLbL.Location = new System.Drawing.Point(30, 30);
-            this.mainLbL.Name = "mainLbL";
-            this.mainLbL.Size = new System.Drawing.Size(0, 26);
-            this.mainLbL.TabIndex = 17;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,6 +293,7 @@
             this.Name = "Form1";
             this.Text = "Panel Logo";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MainTitlePanel.ResumeLayout(false);
             this.MainTitlePanel.PerformLayout();
@@ -333,12 +312,11 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btAssets;
         private System.Windows.Forms.Panel MainTitlePanel;
         private System.Windows.Forms.Label FPHeader;
         private System.Windows.Forms.Panel MenuPanel1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btManageUsers;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.PictureBox pictureBox3;

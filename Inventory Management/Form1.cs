@@ -9,10 +9,13 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Inventory_Management
 {
+    
     public partial class Form1 : Form
 
-    {
 
+    {
+        
+        private loginPage _loginPage;
         readonly EQUInventoryEntities _eQU;
         //Fields
         private List<Record> records;
@@ -20,15 +23,19 @@ namespace Inventory_Management
         private Random random;
         private int tempIndex;
         private Form activeForm;
+      //  public string _RoleName;
         
         public Form1()
         {
             InitializeComponent();
             _eQU = new EQUInventoryEntities();
            random = new Random();
+            
          
           
         }
+       
+
 
         private void addUserControl(UserControl userControl)
         {
@@ -39,14 +46,18 @@ namespace Inventory_Management
 
 
         }
+        
         private void Form1_Load(object sender, EventArgs e)
         {
+         
            
+
+            
             int w = Screen.PrimaryScreen.Bounds.Width;
             int h = Screen.PrimaryScreen.Bounds.Height;
             this.Location = new Point(0, 0);
             this.Size = new Size(w, h);
-
+            
             DashBoard dashBoard = new DashBoard();
             addUserControl(dashBoard);
             mainLbL.Text = "Dash Board";
@@ -123,19 +134,7 @@ namespace Inventory_Management
             addUserControl(dashBoard);
             mainLbL.Text = "Dash Board";
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender);
-           
-            // asset_Check_Out_Form.ShowDialog();   
-            AssetControl assetControl= new AssetControl();
-            addUserControl(assetControl);
-            mainLbL.Text = "Assets";
-
-
-        }
-
+        
         private void button3_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
@@ -161,10 +160,22 @@ namespace Inventory_Management
 
         }
 
-        private void button5_Click_1(object sender, EventArgs e)
+
+        
+       
+        private void panel5_Paint(object sender, PaintEventArgs e)
         {
-            ActivateButton(sender);
-            UserAdministration userAdministration = new UserAdministration();
+
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _loginPage.Close();
+        }
+
+        private void btManageUsers_Click(object sender, EventArgs e)
+        {
+            var userAdministration = new UserAdministration();
             AssetControl assetControl = new AssetControl();
             addUserControl(userAdministration);
 
@@ -172,12 +183,15 @@ namespace Inventory_Management
 
         }
 
-        private void panel5_Paint(object sender, PaintEventArgs e)
+        private void btAssets_Click(object sender, EventArgs e)
         {
+            ActivateButton(sender);
 
+            // asset_Check_Out_Form.ShowDialog();   
+            AssetControl assetControl = new AssetControl();
+            addUserControl(assetControl);
+            mainLbL.Text = "Assets";
         }
-
-      
     }
 
 

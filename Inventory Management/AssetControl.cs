@@ -904,6 +904,9 @@ namespace Inventory_Management
             {
                 MessageBox.Show("Please select a record to edit.", "No Record Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+
+
         }
 
         private void btdelete_Click(object sender, EventArgs e)
