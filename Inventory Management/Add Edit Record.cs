@@ -86,7 +86,7 @@ namespace Inventory_Management
                 cbType.SelectedValue = -1;
             }
             
-          
+            cbBrand.Text=recordToEdit?.Brand ?? "";
             tbAssetTag.Text = recordToEdit?.AssetTag ?? "";
             tbDescription.Text = recordToEdit?.Description ?? "";
             tbSerialNo.Text = recordToEdit?.SerialNo ?? "";
@@ -98,7 +98,7 @@ namespace Inventory_Management
             else
             {
 
-                dtPicker.CustomFormat = "No Date".ToString();
+                dtPicker.CustomFormat = "Nil".ToString();
                 dtPicker.Format = DateTimePickerFormat.Custom;
             }
 
@@ -110,7 +110,7 @@ namespace Inventory_Management
         private void Add_New_Record_Load(object sender, EventArgs e)
         {
 
-         
+            lblID.Visible = false;  
 
         }
 
@@ -147,6 +147,8 @@ namespace Inventory_Management
             cbType.ValueMember = "Id";
             cbType.DataSource = itemTypeList;
 
+
+
             
 
         }
@@ -172,7 +174,7 @@ namespace Inventory_Management
                         record.Description = tbDescription.Text;
                         record.SerialNo = tbSerialNo.Text;
                         record.PurchaseDate = dtPicker.Value;
-
+                        record.Brand= cbBrand.Text; 
                         _eQU.SaveChanges();
                     }
                 }
@@ -183,16 +185,17 @@ namespace Inventory_Management
                     var shortdate = dtPicker.Value;
                     string assest = tbAssetTag.Text;
                     var category = (Category)cbCategory.SelectedItem;
-                    var location = cbLocation.Text;
+                    var location =(Location)cbLocation.SelectedItem;
                     var status = (Status)cbStatus.SelectedItem;
                     var itemtype = (ItemType)cbType.SelectedItem;
                     string serialno = tbSerialNo.Text;
                     var assets = tbAssetTag.Text;
+                    var brand = cbBrand.Text;   
 
                     var isvalid = true;
                     var errorMessage = "";
 
-                    if (string.IsNullOrWhiteSpace(description) || string.IsNullOrWhiteSpace(location))
+                    if (string.IsNullOrWhiteSpace(description))
                     {
                         isvalid = false;
                         errorMessage += "Error please enter information";
@@ -205,11 +208,12 @@ namespace Inventory_Management
                                  $"Description: {description}\n" +
                          $"Asset Tag: {assest}\n" +
                          $"Category: {category.CategoryName}\n" +
-                         $"Location: {location}\n" +
+                         $"Location: {location.LocationName}\n" +
                          $"Status: {status.StatusName}\n" +
                          $"Item Type: {itemtype.TypeName}\n" +
                          $"Serial No: {serialno}\n" +
-                         $"Purchase Date: {shortdate}";
+                         $"Purchase Date: {shortdate}\n"+
+                         $"Brand:{brand }";
 
                         // Display confirmation message with entered details
                         var confirmResult = MessageBox.Show(confirmationMessage, "Confirm Record Details", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
@@ -243,7 +247,8 @@ namespace Inventory_Management
                     record.CategoryID = category.Id;
                     record.StatusID = status.Id;
                     record.AssetTag = assest;
-
+                    record.Brand = brand;
+                    record.Location = location;
                     _eQU.Records.Add(record);
                     _eQU.SaveChanges();
                     MessageBox.Show("Record added");
@@ -256,11 +261,11 @@ namespace Inventory_Management
                     }
 
                 }
-            }
+           }
             catch
             {
 
-                MessageBox.Show("An unexpected error has occured, plesae contact you administrator");
+                //MessageBox.Show("An unexpected error has occured, plesae contact you administrator");
 
 
             }

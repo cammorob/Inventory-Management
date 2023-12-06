@@ -116,7 +116,9 @@ namespace Inventory_Management
                         dGV.Title = "Asset Report ";//Header
                         dGV.SubTitle = string.Format("Date: {0}", DateTime.Now.Date.ToString("MM/dd/yyyy"));
                         dGV.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+                        dGV.PrintHeader = true;
                         dGV.PageNumbers = true;
+                        
                         dGV.PageNumberInHeader = false;
                         dGV.PorportionalColumns = true;
 

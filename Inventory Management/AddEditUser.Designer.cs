@@ -38,7 +38,7 @@
             this.AddEditUserlbl = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.btSubmit = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btExit = new System.Windows.Forms.Button();
             this.cbUserRole = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
@@ -132,14 +132,15 @@
             this.btSubmit.UseVisualStyleBackColor = true;
             this.btSubmit.Click += new System.EventHandler(this.btSubmit_Click);
             // 
-            // button2
+            // btExit
             // 
-            this.button2.Location = new System.Drawing.Point(348, 245);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 35;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btExit.Location = new System.Drawing.Point(348, 245);
+            this.btExit.Name = "btExit";
+            this.btExit.Size = new System.Drawing.Size(75, 23);
+            this.btExit.TabIndex = 35;
+            this.btExit.Text = "Exit";
+            this.btExit.UseVisualStyleBackColor = true;
+            this.btExit.Click += new System.EventHandler(this.btExit_Click);
             // 
             // cbUserRole
             // 
@@ -155,7 +156,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(518, 276);
             this.Controls.Add(this.cbUserRole);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btExit);
             this.Controls.Add(this.btSubmit);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.AddEditUserlbl);
@@ -166,10 +167,11 @@
             this.Controls.Add(this.tbUserName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.la);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddEditUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddEditUser";
+            this.Load += new System.EventHandler(this.AddEditUser_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,7 +189,7 @@
         private System.Windows.Forms.Label AddEditUserlbl;
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Button btSubmit;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btExit;
         private System.Windows.Forms.ComboBox cbUserRole;
     }
 }

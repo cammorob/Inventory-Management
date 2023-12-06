@@ -170,11 +170,14 @@ namespace Inventory_Management
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _loginPage.Close();
+            //_loginPage.Close();
+            Application.Exit();
+            
         }
 
         private void btManageUsers_Click(object sender, EventArgs e)
         {
+            ActivateButton(sender);
             var userAdministration = new UserAdministration();
             AssetControl assetControl = new AssetControl();
             addUserControl(userAdministration);

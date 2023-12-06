@@ -32,7 +32,7 @@
             this.MainTitlePanel = new System.Windows.Forms.Panel();
             this.usersGridView1 = new System.Windows.Forms.DataGridView();
             this.btResetPassword = new System.Windows.Forms.Button();
-            this.DeAct = new System.Windows.Forms.Button();
+            this.ReFreshBrid = new System.Windows.Forms.Button();
             this.btEdit = new System.Windows.Forms.Button();
             this.btAddUser = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.usersGridView1)).BeginInit();
@@ -59,7 +59,8 @@
             // 
             // btResetPassword
             // 
-            this.btResetPassword.Location = new System.Drawing.Point(376, 64);
+            this.btResetPassword.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btResetPassword.Location = new System.Drawing.Point(562, 65);
             this.btResetPassword.Name = "btResetPassword";
             this.btResetPassword.Size = new System.Drawing.Size(93, 23);
             this.btResetPassword.TabIndex = 21;
@@ -67,19 +68,20 @@
             this.btResetPassword.UseVisualStyleBackColor = true;
             this.btResetPassword.Click += new System.EventHandler(this.btResetPassword_Click_1);
             // 
-            // DeAct
+            // ReFreshBrid
             // 
-            this.DeAct.Location = new System.Drawing.Point(475, 65);
-            this.DeAct.Name = "DeAct";
-            this.DeAct.Size = new System.Drawing.Size(93, 23);
-            this.DeAct.TabIndex = 20;
-            this.DeAct.Text = "Deactivate User";
-            this.DeAct.UseVisualStyleBackColor = true;
-            this.DeAct.Click += new System.EventHandler(this.DeAct_Click);
+            this.ReFreshBrid.Location = new System.Drawing.Point(562, 402);
+            this.ReFreshBrid.Name = "ReFreshBrid";
+            this.ReFreshBrid.Size = new System.Drawing.Size(93, 23);
+            this.ReFreshBrid.TabIndex = 20;
+            this.ReFreshBrid.Text = "Refresh";
+            this.ReFreshBrid.UseVisualStyleBackColor = true;
+            this.ReFreshBrid.Click += new System.EventHandler(this.DeAct_Click);
             // 
             // btEdit
             // 
-            this.btEdit.Location = new System.Drawing.Point(263, 64);
+            this.btEdit.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEdit.Location = new System.Drawing.Point(359, 65);
             this.btEdit.Name = "btEdit";
             this.btEdit.Size = new System.Drawing.Size(93, 23);
             this.btEdit.TabIndex = 19;
@@ -90,7 +92,7 @@
             // btAddUser
             // 
             this.btAddUser.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAddUser.Location = new System.Drawing.Point(144, 64);
+            this.btAddUser.Location = new System.Drawing.Point(144, 65);
             this.btAddUser.Name = "btAddUser";
             this.btAddUser.Size = new System.Drawing.Size(93, 23);
             this.btAddUser.TabIndex = 18;
@@ -105,7 +107,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.btResetPassword);
-            this.Controls.Add(this.DeAct);
+            this.Controls.Add(this.ReFreshBrid);
             this.Controls.Add(this.btEdit);
             this.Controls.Add(this.btAddUser);
             this.Controls.Add(this.MainTitlePanel);
@@ -122,7 +124,7 @@
         private System.Windows.Forms.Panel MainTitlePanel;
         private System.Windows.Forms.DataGridView usersGridView1;
         private System.Windows.Forms.Button btResetPassword;
-        private System.Windows.Forms.Button DeAct;
+        private System.Windows.Forms.Button ReFreshBrid;
         private System.Windows.Forms.Button btEdit;
         private System.Windows.Forms.Button btAddUser;
     }

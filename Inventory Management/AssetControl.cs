@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +21,7 @@ namespace Inventory_Management
         private QueryDataBase dbQuery;
         int pageNumber = 1;
         int pageSize = 15;
+
         private List<object> query;
        
         public AssetControl()
@@ -135,7 +137,7 @@ namespace Inventory_Management
             {
                 var allRecords = dbQuery.GetAssetRecords();
                 AssetdataGridView1.DataSource = allRecords;
-
+                
 
 
             }
@@ -915,9 +917,25 @@ namespace Inventory_Management
             {
                 var id = (int)AssetdataGridView1.SelectedRows[0].Cells["Id"].Value;
                 var record = _eQU.Records.FirstOrDefault(q => q.Id == id);
-                _eQU.Records.Remove(record);
-                _eQU.SaveChanges();
-                AssetdataGridView1.Refresh();
+
+                if (record != null)
+                {
+                    var confirmationMessage = "Are you sure you want to delete this record?";
+                    var confirmResult = MessageBox.Show(confirmationMessage, "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        _eQU.Records.Remove(record);
+                        _eQU.SaveChanges();
+                        MessageBox.Show("Record deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    // If the user clicks 'No', do nothing (record won't be deleted)
+                }
+                else
+                {
+                    // Handle the case where the record with the specified id was not found
+                    MessageBox.Show("Record not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
@@ -952,10 +970,25 @@ namespace Inventory_Management
 
         }
 
+        private void RefreshDataGridView()
+        {
+             // Replace with your actual data retrieval logic
+
+            // Update the DataGridView with data from the current page
+            AssetdataGridView1.DataSource = query.Skip((pageNumber =1 ) * pageSize).Take(pageSize).ToList();
+            lblPageNumber.Text = string.Format("Page {0}/{1}", pageNumber, (int)Math.Ceiling((double)query.Count / pageSize));
+        }
+
+
         private void button6_Click(object sender, EventArgs e)
         {
+            if (pageNumber > 1)
+            {
+                pageNumber = 1;
+                DisplayCurrentPage();
+                SetButtonStates();
+            }
 
-            query = dbQuery.GetAssetRecords();
         }
     }
 }

@@ -22,32 +22,7 @@ namespace Inventory_Management
 
         private void DeAct_Click(object sender, EventArgs e)
         {
-            try
-            {
-
-                var id = (int)usersGridView1.SelectedRows[0].Cells["Id"].Value;
-                var user = _eQU.Users.FirstOrDefault(x => x.Id == id);
-
-                user.isActive = user.isActive == true ? true : false;
-
-                if (user.isActive == false)
-                {
-                    MessageBox.Show($"{user.Username}) deactivated");
-
-                }
-                else
-                {
-                    MessageBox.Show($"{user.Username}) Activated");
-                }
-                PopulateGrid();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"error :{ex.Message}");
-
-
-
-            }
+          PopulateGrid();   
         }
         public void PopulateGrid()
         {

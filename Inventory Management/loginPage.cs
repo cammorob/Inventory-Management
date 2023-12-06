@@ -19,7 +19,7 @@ namespace Inventory_Management
         {
             InitializeComponent();
             _eQU = new EQUInventoryEntities();  
-            this.Text = string.Empty;
+           // this.Text = string.Empty;
         }
 
         private void loginPage_Load(object sender, EventArgs e)

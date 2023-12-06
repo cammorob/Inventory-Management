@@ -31,12 +31,12 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.EditBt = new System.Windows.Forms.Button();
             this.BtAdd = new System.Windows.Forms.Button();
             this.searchBox1 = new System.Windows.Forms.TextBox();
             this.lblPageNumber = new System.Windows.Forms.Label();
             this.btNext = new System.Windows.Forms.Button();
             this.btPrevious = new System.Windows.Forms.Button();
-            this.searchBt = new System.Windows.Forms.Button();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,7 +70,6 @@
             this.fireExtinguisherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.AssetdataGridView1 = new System.Windows.Forms.DataGridView();
-            this.EditBt = new System.Windows.Forms.Button();
             this.btdelete = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -109,13 +108,23 @@
             this.panel3.Controls.Add(this.btNext);
             this.panel3.Controls.Add(this.button6);
             this.panel3.Controls.Add(this.btPrevious);
-            this.panel3.Controls.Add(this.searchBt);
             this.panel3.Controls.Add(this.menuStrip2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1140, 52);
             this.panel3.TabIndex = 15;
+            // 
+            // EditBt
+            // 
+            this.EditBt.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditBt.Location = new System.Drawing.Point(1045, 8);
+            this.EditBt.Name = "EditBt";
+            this.EditBt.Size = new System.Drawing.Size(95, 24);
+            this.EditBt.TabIndex = 25;
+            this.EditBt.Text = "Edit ";
+            this.EditBt.UseVisualStyleBackColor = true;
+            this.EditBt.Click += new System.EventHandler(this.EditBt_Click);
             // 
             // BtAdd
             // 
@@ -167,19 +176,6 @@
             this.btPrevious.Text = "Previous Page";
             this.btPrevious.UseVisualStyleBackColor = true;
             this.btPrevious.Click += new System.EventHandler(this.btPrevious_Click);
-            // 
-            // searchBt
-            // 
-            this.searchBt.BackColor = System.Drawing.Color.White;
-            this.searchBt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.searchBt.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.searchBt.FlatAppearance.BorderSize = 0;
-            this.searchBt.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBt.Location = new System.Drawing.Point(835, 5);
-            this.searchBt.Name = "searchBt";
-            this.searchBt.Size = new System.Drawing.Size(106, 29);
-            this.searchBt.TabIndex = 18;
-            this.searchBt.UseVisualStyleBackColor = false;
             // 
             // menuStrip2
             // 
@@ -458,22 +454,11 @@
             this.AssetdataGridView1.Size = new System.Drawing.Size(1140, 450);
             this.AssetdataGridView1.TabIndex = 16;
             // 
-            // EditBt
-            // 
-            this.EditBt.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditBt.Location = new System.Drawing.Point(1045, 8);
-            this.EditBt.Name = "EditBt";
-            this.EditBt.Size = new System.Drawing.Size(95, 24);
-            this.EditBt.TabIndex = 25;
-            this.EditBt.Text = "Edit ";
-            this.EditBt.UseVisualStyleBackColor = true;
-            this.EditBt.Click += new System.EventHandler(this.EditBt_Click);
-            // 
             // btdelete
             // 
             this.btdelete.BackColor = System.Drawing.Color.Red;
             this.btdelete.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btdelete.Location = new System.Drawing.Point(1033, 457);
+            this.btdelete.Location = new System.Drawing.Point(1042, 476);
             this.btdelete.Name = "btdelete";
             this.btdelete.Size = new System.Drawing.Size(95, 24);
             this.btdelete.TabIndex = 26;
@@ -511,7 +496,6 @@
         private System.Windows.Forms.Label lblPageNumber;
         private System.Windows.Forms.Button btNext;
         private System.Windows.Forms.Button btPrevious;
-        private System.Windows.Forms.Button searchBt;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView AssetdataGridView1;
         private System.Windows.Forms.MenuStrip menuStrip2;
