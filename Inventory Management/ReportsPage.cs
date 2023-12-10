@@ -22,7 +22,7 @@ namespace Inventory_Management
     {
         private readonly EQUInventoryEntities _eQU;
         public DataGridView reportDataGridView;
-        
+        private QueryDataBase _queryDataBase;
         private Chart chart;
         int pageNumber = 1;
         int pageSize = 15;
@@ -34,7 +34,7 @@ namespace Inventory_Management
             this.Controls.Add(reportChart);
             StyleDatagridview();
             InitializeComponents();
-
+            _queryDataBase = new QueryDataBase(new EQUInventoryEntities());
 
         }
         private void InitializeComponents()
@@ -343,5 +343,6 @@ namespace Inventory_Management
                 MessageBox.Show("No data to print.");
             }
         }
+           
     }
 }

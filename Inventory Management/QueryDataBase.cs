@@ -14,6 +14,7 @@ namespace Inventory_Management
 
         public QueryDataBase(EQUInventoryEntities context)
         {
+
             _eQU = context;
         }
 
@@ -131,8 +132,18 @@ namespace Inventory_Management
             }
         }
 
+       
     }
 }
+
+
+
+
+
+
+
+    
+
 
 
 

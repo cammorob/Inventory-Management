@@ -37,7 +37,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.statusReport = new System.Windows.Forms.Button();
             this.btTypeReport = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btCategory = new System.Windows.Forms.Button();
             this.LocationReport = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -65,7 +65,7 @@
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.statusReport);
             this.panel1.Controls.Add(this.btTypeReport);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btCategory);
             this.panel1.Controls.Add(this.LocationReport);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
@@ -81,6 +81,7 @@
             this.button5.TabIndex = 3;
             this.button5.Text = "Total Inventory Report";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.ReportsPage_Load);
             // 
             // statusReport
             // 
@@ -104,15 +105,16 @@
             this.btTypeReport.UseVisualStyleBackColor = true;
             this.btTypeReport.Click += new System.EventHandler(this.btTypeReport_Click);
             // 
-            // button2
+            // btCategory
             // 
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(239, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(220, 71);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Category Report";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btCategory.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCategory.Location = new System.Drawing.Point(239, 0);
+            this.btCategory.Name = "btCategory";
+            this.btCategory.Size = new System.Drawing.Size(220, 71);
+            this.btCategory.TabIndex = 1;
+            this.btCategory.Text = "Category Report";
+            this.btCategory.UseVisualStyleBackColor = true;
+            this.btCategory.Click += new System.EventHandler(this.ReportsPage_Load);
             // 
             // LocationReport
             // 
@@ -142,10 +144,11 @@
             // 
             // PrinterBt
             // 
+            this.PrinterBt.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.PrinterBt.Image = ((System.Drawing.Image)(resources.GetObject("PrinterBt.Image")));
-            this.PrinterBt.Location = new System.Drawing.Point(989, 83);
+            this.PrinterBt.Location = new System.Drawing.Point(920, 80);
             this.PrinterBt.Name = "PrinterBt";
-            this.PrinterBt.Size = new System.Drawing.Size(74, 33);
+            this.PrinterBt.Size = new System.Drawing.Size(114, 66);
             this.PrinterBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PrinterBt.TabIndex = 8;
             this.PrinterBt.TabStop = false;
@@ -269,10 +272,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.PrinterBt);
             this.Controls.Add(this.Search);
             this.Controls.Add(this.catFil);
             this.Controls.Add(this.btCustomize);
-            this.Controls.Add(this.PrinterBt);
             this.Controls.Add(this.statusFil);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.typeFil);
@@ -298,7 +301,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button statusReport;
         private System.Windows.Forms.Button btTypeReport;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btCategory;
         private System.Windows.Forms.Button LocationReport;
         private System.Windows.Forms.DataVisualization.Charting.Chart reportChart;
         private System.Windows.Forms.Label label1;

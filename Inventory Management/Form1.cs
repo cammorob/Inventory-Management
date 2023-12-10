@@ -17,13 +17,14 @@ namespace Inventory_Management
         
         private loginPage _loginPage;
         readonly EQUInventoryEntities _eQU;
+        public string  _Username;
         //Fields
         private List<Record> records;
         private Button currentButton;
         private Random random;
         private int tempIndex;
         private Form activeForm;
-      //  public string _RoleName;
+        public string _RoleName;
         
         public Form1()
         {
@@ -36,12 +37,14 @@ namespace Inventory_Management
           
         }
        
-        public Form1(loginPage loginPage )
+        public Form1(loginPage loginPage, string roleName, String Username)
         {
-
+            _eQU = new EQUInventoryEntities();
             InitializeComponent();
             _loginPage = loginPage;
             random = new Random();
+            UserLabel.Text = Username;
+            _RoleName = roleName;
         }
 
         private void addUserControl(UserControl userControl)
@@ -182,23 +185,61 @@ namespace Inventory_Management
             
         }
 
+
+
         private void btManageUsers_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender);
-            var userAdministration = new UserAdministration();
-            AssetControl assetControl = new AssetControl();
-            addUserControl(userAdministration);
+            using (var adminLoginDialog = new AdminLoginDialog())
+            {
+                if (adminLoginDialog.ShowDialog() == DialogResult.OK)
+                {
+                    IsValidAdminCredentials(adminLoginDialog.AdminUsername, adminLoginDialog.AdminPassword);
+                    
+                        var user1 = _eQU.Users.FirstOrDefault(q =>
+                            q.Username == adminLoginDialog.AdminUsername &&
+                            q.Password == adminLoginDialog.AdminPassword &&
+                            q.isActive == true 
+                          
+                        );
+                    //var id = user1.Id;
+                
 
-            mainLbL.Text = "User Administration";
+                        if (user1 != null && user1.isActive== true && user1.UserRoles.First().RoleID.ToString()=="2"
+                        
+                       )
+                        {
+                            // Admin credentials are valid, proceed with user management
+                            ActivateButton(sender);
+                            var userAdministration = new UserAdministration();
+                            //AssetControl assetControl = new AssetControl();
+                            addUserControl(userAdministration);
+                            mainLbL.Text = "User Administration";
 
+                            
+                        }
+                       
+                    
+                    else
+                    {
+                        // Admin credentials are not valid, show an error message or take appropriate action
+                        MessageBox.Show("Invalid admin credentials. Access denied.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        
+        private bool IsValidAdminCredentials(string username, string password )
+        {
+            var user = _eQU.Users.FirstOrDefault(q => q.Username == username && q.Password == password );
+            return user != null;
         }
 
         private void btAssets_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
-
-            // asset_Check_Out_Form.ShowDialog();   
-            AssetControl assetControl = new AssetControl();
+  
+            AssetControl assetControl = new AssetControl(_RoleName);
             addUserControl(assetControl);
             mainLbL.Text = "Assets";
         }

@@ -117,21 +117,23 @@ namespace Inventory_Management
                     var UserToEdit = _eQU.Users.FirstOrDefault(q => q.Id == id );
 
                     UserToEdit.Username = tbUserName.Text;
+                    UserToEdit.Password= tbPassword.Text;   
                     int selectedRoleId = int.Parse(cbUserRole.SelectedValue.ToString());
-                    var selectedUserRole = _eQU.UserRoles.FirstOrDefault(ur => ur.Id == selectedRoleId);
-                    if (selectedUserRole != null)
+                    var selectedUserRole = _eQU.Roles.FirstOrDefault(ur => ur.Id == selectedRoleId);
+                    UserRole newUserRole = new UserRole
                     {
-                        UserToEdit.UserRoles.Clear(); // Clear existing roles (if any)
-                        UserToEdit.UserRoles.Add(selectedUserRole);
-                    }
-                    UserToEdit.Password = tbPassword.Text;
+                       UserID = UserToEdit.Id,  
+                        Role = selectedUserRole
+                    };
 
+                    UserToEdit.UserRoles.Add(newUserRole);
                     // bool isActiveValue = cbActiveMode.SelectedItem.ToString().ToLower() == "yes";
                     // UserToEdit.isActive = isActiveValue;
                     var selectedOption = (dynamic)cbActiveMode.SelectedItem;
                     bool isActiveValue = selectedOption.isActive;
                     int isActiveNumericValue = isActiveValue ? 1 : 0;
                    UserToEdit.isActive = isActiveNumericValue == 1 ? (bool?)true : (bool?)false;
+
                     _eQU.SaveChanges();
                     UserAdministration userAdministration = new UserAdministration();
                     userAdministration.PopulateGrid();

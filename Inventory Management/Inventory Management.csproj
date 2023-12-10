@@ -205,6 +205,12 @@
     <Compile Include="AddEditUser.Designer.cs">
       <DependentUpon>AddEditUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminLoginDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminLoginDialog.Designer.cs">
+      <DependentUpon>AdminLoginDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="AssetControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -309,6 +315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddEditUser.resx">
       <DependentUpon>AddEditUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminLoginDialog.resx">
+      <DependentUpon>AdminLoginDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AssetControl.resx">
       <DependentUpon>AssetControl.cs</DependentUpon>

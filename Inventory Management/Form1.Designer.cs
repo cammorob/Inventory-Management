@@ -46,6 +46,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dataSet1 = new System.Data.DataSet();
+            this.UserLabel = new System.Windows.Forms.Label();
             this.MainTitlePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.MenuPanel1.SuspendLayout();
@@ -209,6 +210,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.LightSlateGray;
+            this.panel3.Controls.Add(this.UserLabel);
             this.panel3.Controls.Add(this.mainLbL);
             this.panel3.Controls.Add(this.DashBoardDock);
             this.panel3.Controls.Add(this.button7);
@@ -280,6 +282,16 @@
             // 
             this.dataSet1.DataSetName = "NewDataSet";
             // 
+            // UserLabel
+            // 
+            this.UserLabel.AutoSize = true;
+            this.UserLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserLabel.Location = new System.Drawing.Point(941, 26);
+            this.UserLabel.Name = "UserLabel";
+            this.UserLabel.Size = new System.Drawing.Size(50, 16);
+            this.UserLabel.TabIndex = 18;
+            this.UserLabel.Text = "label2";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,6 +339,7 @@
         private System.Data.DataSet dataSet1;
         private System.Windows.Forms.Panel DashBoardDock;
         private System.Windows.Forms.Label mainLbL;
+        private System.Windows.Forms.Label UserLabel;
     }
 }
 

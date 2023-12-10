@@ -17,14 +17,15 @@ namespace Inventory_Management
 
        
         private readonly EQUInventoryEntities _eQU;
+        private loginPage _loginPage;
         private DataTable originalDataTable;
         private QueryDataBase dbQuery;
         int pageNumber = 1;
         int pageSize = 15;
-
+        public string _RoleName;
         private List<object> query;
        
-        public AssetControl()
+        public AssetControl(string roleName)
         {
             InitializeComponent();
             EQUInventoryEntities context = new EQUInventoryEntities();
@@ -32,6 +33,13 @@ namespace Inventory_Management
             StyleGridView();
             dbQuery = new QueryDataBase(context);
             DisplayCurrentPage();
+            _RoleName = roleName;
+           
+
+            if (_RoleName != "admin")
+            {
+                btdelete.Visible=false;
+            }
         }
         private void StyleGridView()
         {
@@ -895,16 +903,29 @@ namespace Inventory_Management
 
         private void EditBt_Click(object sender, EventArgs e)
         {
-            if (AssetdataGridView1.SelectedRows.Count > 0)
+            if (_RoleName == "view")
             {
-                var id = (int)AssetdataGridView1.SelectedRows[0].Cells["Id"].Value;
-                var record = _eQU.Records.FirstOrDefault(q => q.Id == id);
-                var Add_New_Record = new Add_New_Record(record);
-                Add_New_Record.ShowDialog();
+                MessageBox.Show("You don't have enough privileges to access this feature.", 
+                    "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
+
             else
             {
-                MessageBox.Show("Please select a record to edit.", "No Record Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (AssetdataGridView1.SelectedRows.Count > 0)
+                {
+                    var id = (int)AssetdataGridView1.SelectedRows[0].Cells["Id"].Value;
+                    var record = _eQU.Records.FirstOrDefault(q => q.Id == id);
+                    var Add_New_Record = new Add_New_Record(record);
+                    Add_New_Record.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Please select a record to edit.", "No Record Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+
+
             }
 
 

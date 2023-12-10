@@ -51,10 +51,10 @@ namespace Inventory_Management
                 var hashed_password = stringBuilder.ToString();
 
 
-
+                
                 var user1 = _eQU.Users.FirstOrDefault(q =>
                 q.Username == username &&
-                 q.Password == password && q.isActive== true ? false : true
+                 q.Password == password && q.isActive== true 
                 );
 
 
@@ -73,9 +73,10 @@ namespace Inventory_Management
                 {
                    
                  currentUser = username;
-                    var roleName =user1.UserRoles.FirstOrDefault() ;
-                    
-                     var Form1 = new Form1( this);
+                    var USER =user1.Username ;
+                    var NAME = USER;
+                    var role = user1.UserRoles.FirstOrDefault();
+                    var Form1 = new Form1(this, role.Role.ShortName, NAME.ToString()) ;
                     Form1.Show();
                     Hide();
 
