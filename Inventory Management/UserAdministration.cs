@@ -153,7 +153,7 @@ namespace Inventory_Management
                             _eQU.SaveChanges();
 
                             // Show a success message
-                            MessageBox.Show("User deleted successfully.", "Delete Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("User deleted successfully.", "Delete Successful!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             // Refresh the grid after deletion
                             PopulateGrid();
@@ -167,12 +167,12 @@ namespace Inventory_Management
                 }
                 else
                 {
-                    MessageBox.Show("Please select a record to delete.", "No Record Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Please select a record to delete.", "No Record Selected.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Please select a record to delete.", "No Record Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please select a record to delete.", "No Record Selected.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
