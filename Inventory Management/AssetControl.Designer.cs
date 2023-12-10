@@ -184,7 +184,7 @@
             this.filterToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(107, 8);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(58, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(178, 24);
             this.menuStrip2.TabIndex = 23;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -206,7 +206,7 @@
             this.iTEquipmentToolStripMenuItem,
             this.applianceToolStripMenuItem});
             this.categoriesToolStripMenuItem2.Name = "categoriesToolStripMenuItem2";
-            this.categoriesToolStripMenuItem2.Size = new System.Drawing.Size(134, 22);
+            this.categoriesToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.categoriesToolStripMenuItem2.Text = "Categories";
             // 
             // furnitureToolStripMenuItem
@@ -245,7 +245,7 @@
             this.centralRecordingStationToolStripMenuItem,
             this.outDoorStoreroomToolStripMenuItem});
             this.locationToolStripMenuItem.Name = "locationToolStripMenuItem";
-            this.locationToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.locationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.locationToolStripMenuItem.Text = "Location";
             // 
             // receptionToolStripMenuItem
@@ -341,90 +341,90 @@
             this.routerToolStripMenuItem,
             this.fireExtinguisherToolStripMenuItem});
             this.typeToolStripMenuItem.Name = "typeToolStripMenuItem";
-            this.typeToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.typeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.typeToolStripMenuItem.Text = "Type";
             // 
             // monitorToolStripMenuItem
             // 
             this.monitorToolStripMenuItem.Name = "monitorToolStripMenuItem";
-            this.monitorToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.monitorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.monitorToolStripMenuItem.Text = "Monitor";
             this.monitorToolStripMenuItem.Click += new System.EventHandler(this.monitorToolStripMenuItem_Click);
             // 
             // keypoardToolStripMenuItem
             // 
             this.keypoardToolStripMenuItem.Name = "keypoardToolStripMenuItem";
-            this.keypoardToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.keypoardToolStripMenuItem.Text = "Keypoard";
+            this.keypoardToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.keypoardToolStripMenuItem.Text = "Keyboard";
             this.keypoardToolStripMenuItem.Click += new System.EventHandler(this.keypoardToolStripMenuItem_Click);
             // 
             // desktopToolStripMenuItem
             // 
             this.desktopToolStripMenuItem.Name = "desktopToolStripMenuItem";
-            this.desktopToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.desktopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.desktopToolStripMenuItem.Text = "Desktop";
             this.desktopToolStripMenuItem.Click += new System.EventHandler(this.desktopToolStripMenuItem_Click);
             // 
             // laptopToolStripMenuItem
             // 
             this.laptopToolStripMenuItem.Name = "laptopToolStripMenuItem";
-            this.laptopToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.laptopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.laptopToolStripMenuItem.Text = "Laptop";
             this.laptopToolStripMenuItem.Click += new System.EventHandler(this.laptopToolStripMenuItem_Click);
             // 
             // serverToolStripMenuItem
             // 
             this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
-            this.serverToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.serverToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.serverToolStripMenuItem.Text = "Server";
             this.serverToolStripMenuItem.Click += new System.EventHandler(this.serverToolStripMenuItem_Click);
             // 
             // networkStorageToolStripMenuItem
             // 
             this.networkStorageToolStripMenuItem.Name = "networkStorageToolStripMenuItem";
-            this.networkStorageToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.networkStorageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.networkStorageToolStripMenuItem.Text = "Network Storage";
             this.networkStorageToolStripMenuItem.Click += new System.EventHandler(this.networkStorageToolStripMenuItem_Click);
             // 
             // printerToolStripMenuItem
             // 
             this.printerToolStripMenuItem.Name = "printerToolStripMenuItem";
-            this.printerToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.printerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.printerToolStripMenuItem.Text = "Printer";
             this.printerToolStripMenuItem.Click += new System.EventHandler(this.printerToolStripMenuItem_Click);
             // 
             // switchToolStripMenuItem
             // 
             this.switchToolStripMenuItem.Name = "switchToolStripMenuItem";
-            this.switchToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.switchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.switchToolStripMenuItem.Text = "Switch";
             this.switchToolStripMenuItem.Click += new System.EventHandler(this.switchToolStripMenuItem_Click);
             // 
             // uPSToolStripMenuItem
             // 
             this.uPSToolStripMenuItem.Name = "uPSToolStripMenuItem";
-            this.uPSToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.uPSToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.uPSToolStripMenuItem.Text = "UPS";
             this.uPSToolStripMenuItem.Click += new System.EventHandler(this.uPSToolStripMenuItem_Click);
             // 
             // surgeProtectorToolStripMenuItem
             // 
             this.surgeProtectorToolStripMenuItem.Name = "surgeProtectorToolStripMenuItem";
-            this.surgeProtectorToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.surgeProtectorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.surgeProtectorToolStripMenuItem.Text = "Surge Protector";
             this.surgeProtectorToolStripMenuItem.Click += new System.EventHandler(this.surgeProtectorToolStripMenuItem_Click);
             // 
             // routerToolStripMenuItem
             // 
             this.routerToolStripMenuItem.Name = "routerToolStripMenuItem";
-            this.routerToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.routerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.routerToolStripMenuItem.Text = "Router";
             this.routerToolStripMenuItem.Click += new System.EventHandler(this.routerToolStripMenuItem_Click);
             // 
             // fireExtinguisherToolStripMenuItem
             // 
             this.fireExtinguisherToolStripMenuItem.Name = "fireExtinguisherToolStripMenuItem";
-            this.fireExtinguisherToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.fireExtinguisherToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fireExtinguisherToolStripMenuItem.Text = "Fire Extinguisher";
             this.fireExtinguisherToolStripMenuItem.Click += new System.EventHandler(this.fireExtinguisherToolStripMenuItem_Click);
             // 

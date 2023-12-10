@@ -108,7 +108,7 @@
             // 
             this.AddEditUserlbl.AutoSize = true;
             this.AddEditUserlbl.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddEditUserlbl.Location = new System.Drawing.Point(243, 13);
+            this.AddEditUserlbl.Location = new System.Drawing.Point(209, 9);
             this.AddEditUserlbl.Name = "AddEditUserlbl";
             this.AddEditUserlbl.Size = new System.Drawing.Size(0, 19);
             this.AddEditUserlbl.TabIndex = 32;
@@ -145,7 +145,7 @@
             // cbUserRole
             // 
             this.cbUserRole.FormattingEnabled = true;
-            this.cbUserRole.Location = new System.Drawing.Point(213, 117);
+            this.cbUserRole.Location = new System.Drawing.Point(200, 117);
             this.cbUserRole.Name = "cbUserRole";
             this.cbUserRole.Size = new System.Drawing.Size(161, 21);
             this.cbUserRole.TabIndex = 36;
@@ -167,6 +167,7 @@
             this.Controls.Add(this.tbUserName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.la);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddEditUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

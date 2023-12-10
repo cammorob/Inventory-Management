@@ -283,7 +283,7 @@ namespace Inventory_Management
             {
                 try
                 {
-                    string keyword = "Libary"; // The keyword to search for
+                    string keyword = "Library"; // The keyword to search for
 
                     List<object> Locations = dbQuery.GetRecordsByLocation(keyword);
 
@@ -616,7 +616,7 @@ namespace Inventory_Management
             {
                 try
                 {
-                    string keyword = "Destop"; // The keyword to search for
+                    string keyword = "Desktop"; // The keyword to search for
 
                     List<object> Types = dbQuery.GetRecordsByType(keyword);
 

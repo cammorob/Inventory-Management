@@ -15,11 +15,12 @@ namespace Inventory_Management
     public partial class loginPage : Form
     {
         private readonly EQUInventoryEntities _eQU;
+        public string currentUser;
         public loginPage()
         {
             InitializeComponent();
             _eQU = new EQUInventoryEntities();  
-           // this.Text = string.Empty;
+           this.Text = string.Empty;
         }
 
         private void loginPage_Load(object sender, EventArgs e)
@@ -33,28 +34,46 @@ namespace Inventory_Management
             {
                 SHA256 sha =SHA256.Create();
                 var username= tbUserName.Text.Trim();  
-                var password= tbPassword.Text.Trim();
-                var hashed_password = Utils.HashPassword(password);
+                var password= tbPassword.Text;
+                byte[] data = sha.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder stringBuilder = new StringBuilder();
 
-                var user1 = _eQU.Users.FirstOrDefault(q => q.Username.ToString() == username && 
-                q.Password.ToString() == hashed_password && q.isActive== true);
+                for (int i = 0; i < data.Length; i++) 
+                {
+                    stringBuilder.Append(data[i].ToString("x2"));
+                
+                
+                }
 
-           
 
 
-                if (user1 != null) 
+
+                var hashed_password = stringBuilder.ToString();
+
+
+
+                var user1 = _eQU.Users.FirstOrDefault(q =>
+                q.Username == username &&
+                 q.Password == password
+                );
+
+
+
+                if (user1 == null) 
                 
                 {
 
                     MessageBox.Show("Please provide valid credentials");
+                    tbUserName.Clear();
+                    tbPassword.Clear();
                 
                 }
                 else
 
                 {
                    
-                 
-                    // var roleName = role.Role.RoleName;
+                 currentUser = username;
+                    var roleName =user1.Username ;
                      var Form1 = new Form1( );
                     Form1.Show();
                     Hide();

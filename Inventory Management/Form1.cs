@@ -9,7 +9,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Inventory_Management
 {
-    
+     
     public partial class Form1 : Form
 
 
@@ -30,7 +30,8 @@ namespace Inventory_Management
             InitializeComponent();
             _eQU = new EQUInventoryEntities();
            random = new Random();
-            
+            _loginPage = new loginPage();   
+          
          
           
         }
@@ -43,7 +44,7 @@ namespace Inventory_Management
             DashBoardDock.Controls.Clear();
             DashBoardDock.Controls.Add(userControl);
             userControl.BringToFront();
-
+          
 
         }
         
@@ -194,6 +195,13 @@ namespace Inventory_Management
             AssetControl assetControl = new AssetControl();
             addUserControl(assetControl);
             mainLbL.Text = "Assets";
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            loginPage loginPage = new loginPage();
+            loginPage.Show();
+            Hide(); 
         }
     }
 

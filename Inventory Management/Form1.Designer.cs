@@ -160,13 +160,13 @@
             // 
             this.FPHeader.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FPHeader.AutoSize = true;
-            this.FPHeader.Font = new System.Drawing.Font("Perpetua Titling MT", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FPHeader.Font = new System.Drawing.Font("Times New Roman", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FPHeader.ForeColor = System.Drawing.Color.Black;
-            this.FPHeader.Location = new System.Drawing.Point(536, 9);
+            this.FPHeader.Location = new System.Drawing.Point(615, 9);
             this.FPHeader.Name = "FPHeader";
-            this.FPHeader.Size = new System.Drawing.Size(328, 24);
+            this.FPHeader.Size = new System.Drawing.Size(232, 55);
             this.FPHeader.TabIndex = 0;
-            this.FPHeader.Text = "Asset Management System";
+            this.FPHeader.Text = "EQU IMS";
             // 
             // MenuPanel1
             // 
@@ -246,6 +246,7 @@
             this.button7.TabIndex = 13;
             this.button7.Text = "Logout";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // label1
             // 
