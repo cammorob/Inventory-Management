@@ -54,7 +54,7 @@ namespace Inventory_Management
 
                 var user1 = _eQU.Users.FirstOrDefault(q =>
                 q.Username == username &&
-                 q.Password == password
+                 q.Password == password && q.isActive== true ? false : true
                 );
 
 
@@ -73,8 +73,9 @@ namespace Inventory_Management
                 {
                    
                  currentUser = username;
-                    var roleName =user1.Username ;
-                     var Form1 = new Form1( );
+                    var roleName =user1.UserRoles.FirstOrDefault() ;
+                    
+                     var Form1 = new Form1( this);
                     Form1.Show();
                     Hide();
 

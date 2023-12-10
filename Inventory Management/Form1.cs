@@ -36,7 +36,13 @@ namespace Inventory_Management
           
         }
        
+        public Form1(loginPage loginPage )
+        {
 
+            InitializeComponent();
+            _loginPage = loginPage;
+            random = new Random();
+        }
 
         private void addUserControl(UserControl userControl)
         {
