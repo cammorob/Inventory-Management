@@ -63,7 +63,7 @@ namespace Inventory_Management
                 
                 {
 
-                    MessageBox.Show("Please provide valid credentials");
+                    MessageBox.Show("Please provide valid login credentials.");
                     tbUserName.Clear();
                     tbPassword.Clear();
                 
@@ -85,7 +85,7 @@ namespace Inventory_Management
             catch 
             {
 
-                MessageBox.Show("Something went wrong. PLease try again");
+                MessageBox.Show("Something went wrong. Please try again.");
             }
 
         }

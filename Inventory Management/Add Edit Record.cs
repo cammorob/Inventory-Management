@@ -159,7 +159,7 @@ namespace Inventory_Management
             {
                 if (formMode)
                 {
-                    if (MessageBox.Show("Do You Want To edit This Record", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show("Do you want to edit this record?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         var id = int.Parse(lblID.Text);
 
@@ -198,7 +198,7 @@ namespace Inventory_Management
                     if (string.IsNullOrWhiteSpace(description))
                     {
                         isvalid = false;
-                        errorMessage += "Error please enter information";
+                        errorMessage += "Error! Please enter the correct information.";
 
                     }
 
@@ -216,7 +216,7 @@ namespace Inventory_Management
                          $"Brand:{brand }";
 
                         // Display confirmation message with entered details
-                        var confirmResult = MessageBox.Show(confirmationMessage, "Confirm Record Details", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                        var confirmResult = MessageBox.Show(confirmationMessage, "Confirm Record Details:", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
                         if (confirmResult == DialogResult.OK)
                         {
@@ -251,8 +251,8 @@ namespace Inventory_Management
                     record.Location = location;
                     _eQU.Records.Add(record);
                     _eQU.SaveChanges();
-                    MessageBox.Show("Record added");
-                    if (MessageBox.Show("Do you want to add another record", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    MessageBox.Show("Record added!");
+                    if (MessageBox.Show("Do you want to add another record?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                     {
 
                         Close();
